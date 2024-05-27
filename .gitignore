@@ -1,8 +1,8 @@
 *.apk
 *.iml
 .gradle
-.kotlin
 .idea
+.kotlin
 .DS_Store
 build
 */build
@@ -11,7 +11,10 @@ captures
 .cxx
 local.properties
 xcuserdata/
+Pods/
 *.jks
 *yarn.lock
-/iosApp/iosApp.xcworkspace/contents.xcworkspacedata
-/iosApp/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/iosAppComposeUi/iosApp.xcworkspace/contents.xcworkspacedata
+/iosAppComposeUi/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/iosAppNativeUi/iosApp.xcworkspace/contents.xcworkspacedata
+/iosAppNativeUi/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist

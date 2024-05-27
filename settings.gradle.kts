@@ -1,5 +1,7 @@
-rootProject.name = "DoorbellMp"
-include()
+rootProject.name = "Multiplatform-App"
+include(
+    ":composeApp"
+)
 
 pluginManagement {
     repositories {
