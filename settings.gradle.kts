@@ -1,6 +1,5 @@
 rootProject.name = "DoorbellMp"
-include(
-)
+include()
 
 pluginManagement {
     repositories {
