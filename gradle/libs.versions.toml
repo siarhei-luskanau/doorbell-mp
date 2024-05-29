@@ -2,6 +2,11 @@
 agp = "8.2.2"
 androidx-activityCompose = "1.9.0"
 androidx-uiTest = "1.6.7"
+build-android-compileSdk = "34"
+build-android-minSdk = "24"
+build-android-targetSdk = "34"
+build-javaVersion = "VERSION_1_8"
+build-jvmTarget = "1.8"
 compose = "1.6.10"
 detekt = "1.23.6"
 javax-json = "1.1.4"
@@ -9,11 +14,13 @@ kotlin = "2.0.0"
 ktlint = "1.2.1"
 
 [libraries]
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
 
 [plugins]

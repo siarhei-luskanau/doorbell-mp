@@ -89,7 +89,7 @@ tasks.register("ciAndroidEmulator") {
     group = CI_GRADLE
     doLast {
         val tasks = mutableListOf(
-            "pixel5DebugAndroidTest",
+            "managedVirtualDeviceDebugAndroidTest",
             "--no-parallel",
             "--max-workers=1",
             "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect",

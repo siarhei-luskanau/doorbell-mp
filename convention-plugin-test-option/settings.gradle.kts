@@ -1,10 +1,4 @@
-rootProject.name = "DoorbellMp"
-include(
-    ":composeApp"
-)
-
 pluginManagement {
-    includeBuild("convention-plugin-test-option")
     repositories {
         google()
         gradlePluginPortal()
@@ -16,5 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+    }
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
     }
 }

@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -10,6 +9,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
+    id("testOptionsConvention")
 }
 
 kotlin {
@@ -17,8 +17,12 @@ kotlin {
         compilations.all {
             compileTaskProvider {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_1_8)
-                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
+                    jvmTarget.set(JvmTarget.fromTarget(libs.versions.build.jvmTarget.get()))
+                    freeCompilerArgs.add(
+                        "-Xjdk-release=${
+                            JavaVersion.valueOf(libs.versions.build.javaVersion.get())
+                        }"
+                    )
                 }
             }
         }
@@ -96,11 +100,11 @@ kotlin {
 
 android {
     namespace = "org.company.app"
-    compileSdk = 34
+    compileSdk = libs.versions.build.android.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 34
+        minSdk = libs.versions.build.android.minSdk.get().toInt()
+        targetSdk = libs.versions.build.android.targetSdk.get().toInt()
 
         applicationId = "org.company.app.androidApp"
         versionCode = 1
@@ -112,27 +116,12 @@ android {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/res")
     }
-    // https://developer.android.com/studio/test/gradle-managed-devices
-    @Suppress("UnstableApiUsage")
-    testOptions {
-        managedDevices.devices {
-            maybeCreate<ManagedVirtualDevice>("pixel5").apply {
-                device = "Pixel 5"
-                apiLevel = 34
-                systemImageSource = "aosp"
-            }
-        }
-    }
+    testOptions.configureTestOptions()
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
+        targetCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
-    }
+    buildFeatures.compose = true
 }
 
 compose.desktop {
