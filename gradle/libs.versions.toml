@@ -5,8 +5,8 @@ androidx-uiTest = "1.6.7"
 build-android-compileSdk = "34"
 build-android-minSdk = "24"
 build-android-targetSdk = "34"
-build-javaVersion = "VERSION_1_8"
-build-jvmTarget = "1.8"
+build-javaVersion = "VERSION_17"
+build-jvmTarget = "17"
 compose = "1.6.10"
 detekt = "1.23.6"
 javax-json = "1.1.4"
@@ -20,6 +20,8 @@ androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref =
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
+jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+jetbrains-compose-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
 

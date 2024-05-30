@@ -67,6 +67,7 @@ kotlin {
             }
         }
         commonMain.dependencies {
+            implementation(project(":navigation"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -99,7 +100,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.company.app"
+    namespace = "siarhei.luskanau.doorbell.mp.app"
     compileSdk = libs.versions.build.android.compileSdk.get().toInt()
 
     defaultConfig {
