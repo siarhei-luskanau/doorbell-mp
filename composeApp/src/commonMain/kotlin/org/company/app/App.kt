@@ -32,98 +32,106 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import doorbellmp.composeapp.generated.resources.IndieFlower_Regular
-import doorbellmp.composeapp.generated.resources.Res
-import doorbellmp.composeapp.generated.resources.cyclone
-import doorbellmp.composeapp.generated.resources.ic_cyclone
-import doorbellmp.composeapp.generated.resources.ic_dark_mode
-import doorbellmp.composeapp.generated.resources.ic_light_mode
-import doorbellmp.composeapp.generated.resources.ic_rotate_right
-import doorbellmp.composeapp.generated.resources.open_github
-import doorbellmp.composeapp.generated.resources.run
-import doorbellmp.composeapp.generated.resources.stop
-import doorbellmp.composeapp.generated.resources.theme
 import org.company.app.theme.AppTheme
 import org.company.app.theme.LocalThemeIsDark
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
+import siarhei.luskanau.doorbell.mp.navigation.NavigationComposable
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.IndieFlower_Regular
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.Res
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.cyclone
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.ic_cyclone
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.ic_dark_mode
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.ic_light_mode
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.ic_rotate_right
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.open_github
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.run
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.stop
+import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.theme
 
 @Composable
-internal fun App() = AppTheme {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing)
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(Res.string.cyclone),
-            fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
-            style = MaterialTheme.typography.displayLarge
-        )
-
-        var isAnimate by remember { mutableStateOf(false) }
-        val transition = rememberInfiniteTransition()
-        val rotate by transition.animateFloat(
-            initialValue = 0f,
-            targetValue = 360f,
-            animationSpec = infiniteRepeatable(
-                animation = tween(1000, easing = LinearEasing)
-            )
-        )
-
-        Image(
+internal fun App() {
+    AppTheme {
+        Column(
             modifier = Modifier
-                .size(250.dp)
-                .padding(16.dp)
-                .run { if (isAnimate) rotate(rotate) else this },
-            imageVector = vectorResource(Res.drawable.ic_cyclone),
-            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface),
-            contentDescription = null
-        )
-
-        ElevatedButton(
-            modifier = Modifier
-                .padding(horizontal = 8.dp, vertical = 4.dp)
-                .widthIn(min = 200.dp),
-            onClick = { isAnimate = !isAnimate },
-            content = {
-                Icon(vectorResource(Res.drawable.ic_rotate_right), contentDescription = null)
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(
-                    stringResource(if (isAnimate) Res.string.stop else Res.string.run)
-                )
-            }
-        )
-
-        var isDark by LocalThemeIsDark.current
-        val icon = remember(isDark) {
-            if (isDark) {
-                Res.drawable.ic_light_mode
-            } else {
-                Res.drawable.ic_dark_mode
-            }
-        }
-
-        ElevatedButton(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).widthIn(min = 200.dp),
-            onClick = { isDark = !isDark },
-            content = {
-                Icon(vectorResource(icon), contentDescription = null)
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text(stringResource(Res.string.theme))
-            }
-        )
-
-        TextButton(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).widthIn(min = 200.dp),
-            onClick = { openUrl("https://github.com/terrakok") }
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(stringResource(Res.string.open_github))
+            Text(
+                text = stringResource(Res.string.cyclone),
+                fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
+                style = MaterialTheme.typography.displayLarge
+            )
+
+            var isAnimate by remember { mutableStateOf(false) }
+            val transition = rememberInfiniteTransition()
+            val rotate by transition.animateFloat(
+                initialValue = 0f,
+                targetValue = 360f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(1000, easing = LinearEasing)
+                )
+            )
+
+            Image(
+                modifier = Modifier
+                    .size(250.dp)
+                    .padding(16.dp)
+                    .run { if (isAnimate) rotate(rotate) else this },
+                imageVector = vectorResource(Res.drawable.ic_cyclone),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface),
+                contentDescription = null
+            )
+
+            ElevatedButton(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .widthIn(min = 200.dp),
+                onClick = { isAnimate = !isAnimate },
+                content = {
+                    Icon(vectorResource(Res.drawable.ic_rotate_right), contentDescription = null)
+                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                    Text(
+                        stringResource(if (isAnimate) Res.string.stop else Res.string.run)
+                    )
+                }
+            )
+
+            var isDark by LocalThemeIsDark.current
+            val icon = remember(isDark) {
+                if (isDark) {
+                    Res.drawable.ic_light_mode
+                } else {
+                    Res.drawable.ic_dark_mode
+                }
+            }
+
+            ElevatedButton(
+                modifier = Modifier.padding(
+                    horizontal = 8.dp,
+                    vertical = 4.dp
+                ).widthIn(min = 200.dp),
+                onClick = { isDark = !isDark },
+                content = {
+                    Icon(vectorResource(icon), contentDescription = null)
+                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                    Text(stringResource(Res.string.theme))
+                }
+            )
+
+            TextButton(
+                modifier = Modifier.padding(
+                    horizontal = 8.dp,
+                    vertical = 4.dp
+                ).widthIn(min = 200.dp),
+                onClick = { }
+            ) {
+                Text(stringResource(Res.string.open_github))
+            }
+            NavigationComposable()
         }
     }
 }
-
-internal expect fun openUrl(url: String?)

@@ -12,7 +12,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":sharedCore:coreCommon"))
-            implementation(project(":sharedUi:sharedSplash"))
+            implementation(project(":sharedUi:uiCyclone"))
+            implementation(project(":sharedUi:uiSplash"))
         }
     }
 }

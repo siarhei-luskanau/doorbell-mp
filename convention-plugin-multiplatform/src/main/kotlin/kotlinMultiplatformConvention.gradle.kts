@@ -55,6 +55,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
         }
 
         commonTest.dependencies {

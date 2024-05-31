@@ -3,7 +3,8 @@ include(
     ":composeApp",
     ":navigation",
     ":sharedCore:coreCommon",
-    ":sharedUi:sharedSplash"
+    ":sharedUi:uiCyclone",
+    ":sharedUi:uiSplash"
 )
 
 pluginManagement {

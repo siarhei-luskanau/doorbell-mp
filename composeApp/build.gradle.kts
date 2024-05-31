@@ -68,11 +68,12 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(project(":navigation"))
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
+            implementation(project(":sharedUi:uiCyclone"))
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.runtime)
         }
 
         commonTest.dependencies {
