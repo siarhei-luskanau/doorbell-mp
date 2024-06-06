@@ -37,10 +37,10 @@ kotlin {
         binaries.executable()
     }
 
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     listOf(
         iosX64(),
@@ -56,6 +56,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.findLibrary("koin-core").get())
+            implementation(libs.findLibrary("kotlinx-coroutines-core").get())
             implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
         }
 
@@ -67,6 +68,7 @@ kotlin {
         }
 
         jvmMain.dependencies {
+            implementation(libs.findLibrary("kotlinx-coroutines-swing").get())
         }
 
         jsMain.dependencies {

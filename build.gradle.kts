@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.compose.compiler).apply(false)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.google.services).apply(false)
     alias(libs.plugins.multiplatform).apply(false)
 }
 

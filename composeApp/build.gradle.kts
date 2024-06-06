@@ -44,10 +44,10 @@ kotlin {
         binaries.executable()
     }
 
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     listOf(
         iosX64(),
@@ -69,6 +69,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
+            implementation(libs.gitlive.firebase.auth)
             implementation(libs.koin.core)
         }
 
@@ -78,6 +79,10 @@ kotlin {
             implementation(compose.uiTest)
         }
 
+        androidNativeTest.dependencies {
+            implementation(libs.androidx.monitor)
+        }
+
         androidMain.dependencies {
             implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
@@ -85,6 +90,10 @@ kotlin {
 
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+        }
+
+        jvmTest.dependencies {
+            implementation(kotlin("test"))
         }
 
         jsMain.dependencies {
@@ -133,3 +142,9 @@ compose.desktop {
         }
     }
 }
+
+dependencies {
+    implementation(platform(libs.google.firebase.bom))
+}
+
+apply(plugin = "com.google.gms.google-services")

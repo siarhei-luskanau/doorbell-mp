@@ -9,31 +9,44 @@ build-javaVersion = "VERSION_17"
 build-jvmTarget = "17"
 compose = "1.6.11"
 detekt = "1.23.6"
+gitlive-firebase = "1.13.0"
+google-firebase-bom = "33.1.1"
+google-services = "4.4.2"
 javax-json = "1.1.4"
 koin = "3.6.0-Beta4"
 kotlin = "2.0.0"
+kotlinx-coroutines = "1.9.0-RC"
 ktlint = "1.3.0"
 lifecycle-viewmodel-compose = "2.8.0"
 screenshot = "0.0.1-alpha02"
+monitor = "1.7.1"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
+gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
+gitlive-firebase-database = { module = "dev.gitlive:firebase-database", version.ref = "gitlive-firebase" }
+gitlive-firebase-storage = { module = "dev.gitlive:firebase-storage", version.ref = "gitlive-firebase" }
+google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "google-firebase-bom" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
 jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 jetbrains-compose-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
 lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-viewmodel-compose" }
+androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "monitor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot"}
