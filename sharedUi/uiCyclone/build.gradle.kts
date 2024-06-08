@@ -1,15 +1,17 @@
 plugins {
     id("composeMultiplatformConvention")
     id("testOptionsConvention")
-}
-
-android {
-    namespace = "siarhei.luskanau.doorbell.mp.ui.cyclone"
-    testOptions.configureTestOptions()
+    alias(libs.plugins.screenshot)
 }
 
 compose.resources {
     publicResClass = true
     packageOfResClass = "siarhei.luskanau.doorbell.mp.ui.cyclones.resources"
     generateResClass = always
+}
+
+android {
+    namespace = "siarhei.luskanau.doorbell.mp.ui.cyclone"
+    testOptions.configureTestOptions()
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }

@@ -1,11 +1,7 @@
 plugins {
     id("composeMultiplatformConvention")
     id("testOptionsConvention")
-}
-
-android {
-    namespace = "siarhei.luskanau.doorbell.mp.navigation"
-    testOptions.configureTestOptions()
+    alias(libs.plugins.screenshot)
 }
 
 kotlin {
@@ -16,4 +12,10 @@ kotlin {
             implementation(project(":sharedUi:uiSplash"))
         }
     }
+}
+
+android {
+    namespace = "siarhei.luskanau.doorbell.mp.navigation"
+    testOptions.configureTestOptions()
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }

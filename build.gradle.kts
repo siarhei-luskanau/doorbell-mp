@@ -46,6 +46,8 @@ tasks.register("devAll") {
         )
         gradlew("ciIos")
         gradlew("ciBrowser")
+        gradlew("updateDebugScreenshotTest")
+        gradlew("validateDebugScreenshotTest")
         gradlew("jsBrowserProductionWebpack")
         gradlew("ciSdkManagerLicenses")
         gradlew("ciAndroidEmulator")
@@ -63,10 +65,18 @@ tasks.register("ciLint") {
     }
 }
 
+tasks.register("ciUpdateScreenshot") {
+    group = CI_GRADLE
+    doLast {
+        gradlew("updateDebugScreenshotTest")
+    }
+}
+
 tasks.register("ciUnitTest") {
     group = CI_GRADLE
     doLast {
         gradlew(":composeApp:jvmTest")
+        runCatching { gradlew("validateDebugScreenshotTest") }
     }
 }
 
@@ -80,7 +90,7 @@ tasks.register("ciAndroid") {
             exclude("**/apk/androidTest/**")
             eachFile { path = name }
             includeEmptyDirs = false
-            into("${layout.buildDirectory}/apk/")
+            into("${layout.buildDirectory.asFile.get().path}/apk/")
         }
     }
 }
