@@ -55,7 +55,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
+            implementation(libs.findLibrary("koin-core").get())
+            implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
         }
 
         commonTest.dependencies {

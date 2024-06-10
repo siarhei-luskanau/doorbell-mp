@@ -1,4 +1,4 @@
-package org.company.app
+package siarhei.luskanau.doorbell.mp.app
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button

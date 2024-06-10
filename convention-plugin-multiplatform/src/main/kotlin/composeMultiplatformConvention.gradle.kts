@@ -10,19 +10,13 @@ plugins {
 
 kotlin {
     sourceSets {
-        all {
-            languageSettings {
-                optIn("androidx.compose.material3.ExperimentalMaterial3Api")
-                optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
-            }
-        }
-
         commonMain.dependencies {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
+            implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
         }
 
         commonTest.dependencies {

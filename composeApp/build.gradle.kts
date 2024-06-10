@@ -61,11 +61,6 @@ kotlin {
     }
 
     sourceSets {
-        all {
-            languageSettings {
-                optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
-            }
-        }
         commonMain.dependencies {
             implementation(project(":navigation"))
             implementation(project(":sharedUi:uiCyclone"))
@@ -74,6 +69,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
+            implementation(libs.koin.core)
         }
 
         commonTest.dependencies {
