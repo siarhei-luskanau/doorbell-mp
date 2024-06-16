@@ -16,7 +16,6 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
-            implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
         }
 
         commonTest.dependencies {
@@ -40,8 +39,4 @@ kotlin {
 
 android {
     buildFeatures.compose = true
-}
-
-compose.experimental {
-    web.application {}
 }
