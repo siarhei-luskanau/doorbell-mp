@@ -37,6 +37,7 @@ import org.company.app.theme.LocalThemeIsDark
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.IndieFlower_Regular
 import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.Res
 import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.cyclone
@@ -49,6 +50,7 @@ import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.run
 import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.stop
 import siarhei.luskanau.doorbell.mp.ui.cyclones.resources.theme
 
+@Preview
 @Composable
 fun CycloneComposable() {
     AppTheme {

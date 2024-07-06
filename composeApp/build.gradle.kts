@@ -78,6 +78,10 @@ kotlin {
             implementation(compose.uiTest)
         }
 
+        androidNativeTest.dependencies {
+            implementation(libs.androidx.monitor)
+        }
+
         androidMain.dependencies {
             implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
@@ -85,6 +89,10 @@ kotlin {
 
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+        }
+
+        jvmTest.dependencies {
+            implementation(kotlin("test"))
         }
 
         jsMain.dependencies {
