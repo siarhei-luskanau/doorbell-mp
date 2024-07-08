@@ -55,9 +55,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.findLibrary("jetbrains-lifecycle-viewmodel-compose").get())
+            implementation(libs.findLibrary("jetbrains-navigation-compose").get())
             implementation(libs.findLibrary("koin-core").get())
             implementation(libs.findLibrary("kotlinx-coroutines-core").get())
-            implementation(libs.findLibrary("lifecycle-viewmodel-compose").get())
         }
 
         commonTest.dependencies {

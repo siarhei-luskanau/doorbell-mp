@@ -9,14 +9,15 @@ build-android-targetSdk = "35"
 build-javaVersion = "VERSION_17"
 build-jvmTarget = "17"
 compose = "1.6.11"
+compose-screenshot = "0.0.1-alpha02"
 detekt = "1.23.6"
 javax-json = "1.1.4"
+jetbrains-lifecycle = "2.8.0"
+jetbrains-navigation = "2.8.0-alpha08"
 koin = "3.6.0-Beta4"
 kotlin = "2.0.0"
 kotlinx-coroutines = "1.9.0-RC"
 ktlint = "1.3.1"
-lifecycle-viewmodel-compose = "2.8.0"
-screenshot = "0.0.1-alpha02"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -28,17 +29,18 @@ javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-js
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
 jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 jetbrains-compose-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
+jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-lifecycle" }
+jetbrains-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-navigation" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-viewmodel-compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-screenshot = { id = "com.android.compose.screenshot", version.ref = "compose-screenshot"}
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot"}

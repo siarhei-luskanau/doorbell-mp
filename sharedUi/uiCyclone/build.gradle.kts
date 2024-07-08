@@ -1,7 +1,7 @@
 plugins {
     id("composeMultiplatformConvention")
     id("testOptionsConvention")
-    alias(libs.plugins.screenshot)
+    alias(libs.plugins.compose.screenshot)
 }
 
 compose.resources {
