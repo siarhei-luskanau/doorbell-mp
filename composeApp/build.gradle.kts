@@ -44,10 +44,10 @@ kotlin {
         binaries.executable()
     }
 
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     listOf(
         iosX64(),
@@ -69,6 +69,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
+            implementation(libs.gitlive.firebase.auth)
             implementation(libs.koin.core)
         }
 
@@ -141,3 +142,9 @@ compose.desktop {
         }
     }
 }
+
+dependencies {
+    implementation(platform(libs.google.firebase.bom))
+}
+
+apply(plugin = "com.google.gms.google-services")

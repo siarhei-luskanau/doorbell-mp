@@ -11,6 +11,9 @@ build-jvmTarget = "17"
 compose = "1.6.11"
 compose-screenshot = "0.0.1-alpha02"
 detekt = "1.23.6"
+gitlive-firebase = "1.13.0"
+google-firebase-bom = "33.1.2"
+google-services = "4.4.2"
 javax-json = "1.1.4"
 jetbrains-lifecycle = "2.8.0"
 jetbrains-navigation = "2.8.0-alpha08"
@@ -25,6 +28,10 @@ androidx-activityCompose = { module = "androidx.activity:activity-compose", vers
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
+gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
+gitlive-firebase-database = { module = "dev.gitlive:firebase-database", version.ref = "gitlive-firebase" }
+gitlive-firebase-storage = { module = "dev.gitlive:firebase-storage", version.ref = "gitlive-firebase" }
+google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "google-firebase-bom" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
 jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
@@ -43,4 +50,5 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-screenshot = { id = "com.android.compose.screenshot", version.ref = "compose-screenshot"}
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
