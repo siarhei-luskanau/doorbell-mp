@@ -1,6 +1,6 @@
 [versions]
 agp = "8.5.1"
-androidx-activityCompose = "1.9.0"
+androidx-activityCompose = "1.9.1"
 androidx-monitor = "1.7.1"
 androidx-uiTest = "1.6.8"
 build-android-compileSdk = "35"
