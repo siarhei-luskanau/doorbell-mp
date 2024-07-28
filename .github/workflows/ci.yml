@@ -31,10 +31,12 @@ jobs:
 
 
   UpdateScreenshot:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
 
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - uses: actions/setup-java@v4
         with:

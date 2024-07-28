@@ -14,14 +14,12 @@ import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.runComposeUiTest
-import kotlin.test.Ignore
 import kotlin.test.Test
 
 @OptIn(ExperimentalTestApi::class)
 class ComposeTest {
 
     @Test
-    @Ignore("JVM: lateinit property scene has not been initialized")
     fun simpleCheck() = runComposeUiTest {
         setContent {
             var txt by remember { mutableStateOf("Go") }

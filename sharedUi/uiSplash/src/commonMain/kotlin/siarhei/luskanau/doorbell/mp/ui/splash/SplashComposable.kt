@@ -17,16 +17,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
-@Preview
 @Composable
-fun SplashComposable(
-    viewModel: SplashViewModel = viewModel {
-        SplashViewModel()
-    }
-) {
+fun SplashComposable(viewModel: SplashViewModel) {
     val vewState = viewModel.getSplashVewStateFlow().collectAsState(initial = null)
     MaterialTheme {
         Surface {

@@ -69,7 +69,10 @@ tasks.register("ciLint") {
 tasks.register("ciUpdateScreenshot") {
     group = CI_GRADLE
     doLast {
-        gradlew("updateDebugScreenshotTest")
+        gradlew(
+            "ktlintFormat",
+            "updateDebugScreenshotTest"
+        )
     }
 }
 

@@ -1,12 +1,14 @@
 package siarhei.luskanau.doorbell.mp.navigation
 
 import androidx.compose.runtime.Composable
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.koin.core.Koin
 import siarhei.luskanau.doorbell.mp.ui.splash.SplashComposable
+import siarhei.luskanau.doorbell.mp.ui.splash.SplashViewModel
 
-@Preview
 @Composable
 fun AppComposable(koin: Koin) {
-    SplashComposable()
+    SplashComposable(
+        viewModel = viewModel { SplashViewModel() }
+    )
 }
