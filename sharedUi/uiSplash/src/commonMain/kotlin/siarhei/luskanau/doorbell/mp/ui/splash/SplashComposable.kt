@@ -1,48 +1,40 @@
 package siarhei.luskanau.doorbell.mp.ui.splash
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.ColorFilter
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import siarhei.luskanau.doorbell.mp.ui.common.Res as UiCommonRes
+import siarhei.luskanau.doorbell.mp.ui.common.ic_android
+import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 
 @Composable
 fun SplashComposable(viewModel: SplashViewModel) {
-    val vewState = viewModel.getSplashVewStateFlow().collectAsState(initial = null)
-    MaterialTheme {
-        Surface {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Splash: hasLogin=" + vewState.value?.hasLogin)
-                TextButton(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 4.dp)
-                        .widthIn(min = 200.dp),
-                    onClick = { viewModel.onClick() }
-                ) {
-                    Text("Login")
-                }
-            }
-        }
-    }
+    Image(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        painter = painterResource(UiCommonRes.drawable.ic_android),
+        colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.secondary),
+        contentDescription = null
+    )
     LaunchedEffect(true) {
-        viewModel.onScreenLoaded()
+        viewModel.onSplashComplete()
     }
+}
+
+@Preview
+@Composable
+internal fun SplashComposablePreview() {
+    AppTheme { SplashComposable(splashViewModel()) }
+}
+
+internal fun splashViewModel(): SplashViewModel = object : SplashViewModel {
+    override fun onSplashComplete() = Unit
 }

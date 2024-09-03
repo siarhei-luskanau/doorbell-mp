@@ -4,7 +4,7 @@ include(
     ":navigation",
     ":sharedCore:coreCommon",
     ":sharedCore:coreFirebase",
-    ":sharedUi:uiCyclone",
+    ":sharedUi:uiCommon",
     ":sharedUi:uiSplash"
 )
 

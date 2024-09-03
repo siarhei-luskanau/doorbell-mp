@@ -63,7 +63,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":navigation"))
-            implementation(project(":sharedUi:uiCyclone"))
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)

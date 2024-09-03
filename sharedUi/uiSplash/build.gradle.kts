@@ -6,8 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedCore:coreCommon"))
-            // implementation(project(":sharedCore:coreFirebase"))
+            implementation(project(":sharedUi:uiCommon"))
         }
     }
 }

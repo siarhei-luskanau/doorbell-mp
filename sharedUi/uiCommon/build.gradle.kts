@@ -3,18 +3,21 @@ plugins {
     id("testOptionsConvention")
     alias(libs.plugins.compose.screenshot)
 }
-
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedCore:coreCommon"))
-            implementation(project(":sharedUi:uiSplash"))
         }
     }
 }
 
 android {
-    namespace = "siarhei.luskanau.doorbell.mp.navigation"
+    namespace = "siarhei.luskanau.doorbell.mp.ui.common"
     testOptions.configureTestOptions()
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "siarhei.luskanau.doorbell.mp.ui.common"
+    generateResClass = always
 }
