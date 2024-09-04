@@ -18,6 +18,7 @@ class AndroidApp : Application() {
     }
 
     override fun onCreate() {
+        super.onCreate()
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
@@ -39,6 +40,5 @@ class AndroidApp : Application() {
         registerActivityLifecycleCallbacks(
             AppActivityLifecycleCallbacks { activity -> (activity as? AppActivity)?.koin = koin }
         )
-        super.onCreate()
     }
 }

@@ -3,8 +3,9 @@ include(
     ":composeApp",
     ":navigation",
     ":sharedCore:coreCommon",
-    ":sharedCore:coreFirebase",
+    // ":sharedCore:coreFirebase",
     ":sharedUi:uiCommon",
+    ":sharedUi:uiPermissions",
     ":sharedUi:uiSplash"
 )
 

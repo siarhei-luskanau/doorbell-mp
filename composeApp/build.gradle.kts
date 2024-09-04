@@ -44,10 +44,10 @@ kotlin {
         binaries.executable()
     }
 
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
 
     listOf(
         iosX64(),
@@ -63,12 +63,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":navigation"))
+            implementation(project(":sharedCore:coreCommon"))
+            implementation(project(":sharedUi:uiPermissions"))
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
-            implementation(libs.gitlive.firebase.auth)
             implementation(libs.koin.core)
         }
 
@@ -84,7 +85,7 @@ kotlin {
 
         androidMain.dependencies {
             implementation(compose.uiTooling)
-            implementation(libs.androidx.activityCompose)
+            implementation(libs.androidx.activity.compose)
         }
 
         jvmMain.dependencies {
