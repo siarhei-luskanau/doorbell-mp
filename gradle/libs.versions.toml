@@ -2,7 +2,7 @@
 agp = "8.6.0"
 androidx-activity = "1.9.1"
 androidx-monitor = "1.7.2"
-androidx-uiTest = "1.6.8"
+androidx-uiTest = "1.7.0"
 build-android-compileSdk = "35"
 build-android-minSdk = "24"
 build-android-targetSdk = "35"
