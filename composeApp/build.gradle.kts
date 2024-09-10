@@ -65,11 +65,13 @@ kotlin {
             implementation(project(":navigation"))
             implementation(project(":sharedCore:coreCommon"))
             implementation(project(":sharedUi:uiPermissions"))
+            implementation(project(":sharedUi:uiSplash"))
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
+            implementation(libs.androidx.splashscreen)
             implementation(libs.koin.core)
         }
 

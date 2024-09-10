@@ -35,6 +35,6 @@ internal fun SplashComposablePreview() {
     AppTheme { SplashComposable(splashViewModel()) }
 }
 
-internal fun splashViewModel(): SplashViewModel = object : SplashViewModel {
+internal fun splashViewModel(): SplashViewModel = object : SplashViewModel() {
     override fun onSplashComplete() = Unit
 }

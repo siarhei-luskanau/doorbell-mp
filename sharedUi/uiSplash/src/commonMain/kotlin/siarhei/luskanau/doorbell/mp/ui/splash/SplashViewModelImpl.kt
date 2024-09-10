@@ -1,18 +1,20 @@
 package siarhei.luskanau.doorbell.mp.ui.splash
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.core.annotation.Factory
+import org.koin.core.annotation.InjectedParam
 
-class SplashViewModelImpl(private val onSplashScreenCompleted: () -> Unit) :
-    ViewModel(),
-    SplashViewModel {
+@Factory
+class SplashViewModelImpl(
+    @InjectedParam private val splashNavigationCallback: SplashNavigationCallback
+) : SplashViewModel() {
 
     override fun onSplashComplete() {
         viewModelScope.launch {
             delay(DELAY_SPLASH)
-            onSplashScreenCompleted.invoke()
+            splashNavigationCallback.onSplashScreenCompleted()
         }
     }
 

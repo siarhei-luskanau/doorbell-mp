@@ -2,6 +2,7 @@
 agp = "8.6.0"
 androidx-activity = "1.9.2"
 androidx-monitor = "1.7.2"
+androidx-splashscreen = "1.0.1"
 androidx-uiTest = "1.7.0"
 build-android-compileSdk = "35"
 build-android-minSdk = "24"
@@ -30,6 +31,7 @@ android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
+androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "google-firebase-bom" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }

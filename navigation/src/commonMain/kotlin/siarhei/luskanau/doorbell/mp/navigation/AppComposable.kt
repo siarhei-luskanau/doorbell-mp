@@ -23,7 +23,7 @@ import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsComposable
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsInitializer
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsViewModel
 import siarhei.luskanau.doorbell.mp.ui.splash.SplashComposable
-import siarhei.luskanau.doorbell.mp.ui.splash.SplashViewModelImpl
+import siarhei.luskanau.doorbell.mp.ui.splash.SplashViewModel
 
 @Composable
 fun AppComposable(koin: Koin) {
@@ -39,9 +39,9 @@ fun AppComposable(koin: Koin) {
             composable<AppRoutes.Splash> {
                 SplashComposable(
                     viewModel = viewModel {
-                        SplashViewModelImpl(onSplashScreenCompleted = {
-                            navHostController.navigate(AppRoutes.Permissions)
-                        })
+                        koin.get<SplashViewModel> {
+                            parametersOf(appNavigation)
+                        }
                     }
                 )
             }

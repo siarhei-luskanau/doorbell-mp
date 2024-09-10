@@ -11,12 +11,13 @@
         android:name="siarhei.luskanau.doorbell.mp.app.AndroidApp"
         android:icon="@android:drawable/ic_menu_compass"
         android:label="Multiplatform App"
-        android:theme="@android:style/Theme.Material.NoActionBar">
+        android:theme="@style/Theme.App.Starting">
         <activity
             android:name="siarhei.luskanau.doorbell.mp.app.AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:launchMode="singleInstance"
+            android:theme="@style/Theme.App.Starting"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
