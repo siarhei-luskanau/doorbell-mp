@@ -1,10 +1,12 @@
 package siarhei.luskanau.doorbell.mp.navigation
 
 import androidx.navigation.NavHostController
+import siarhei.luskanau.doorbell.mp.ui.auth.AuthNavigationCallback
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsNavigationCallback
 import siarhei.luskanau.doorbell.mp.ui.splash.SplashNavigationCallback
 
 class AppNavigation(private val navHostController: NavHostController) :
+    AuthNavigationCallback,
     PermissionsNavigationCallback,
     SplashNavigationCallback {
 

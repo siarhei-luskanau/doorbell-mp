@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
 import org.koin.core.Koin
 import org.koin.core.parameter.parametersOf
+import siarhei.luskanau.doorbell.mp.ui.auth.AuthComposable
 import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsComposable
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsInitializer
@@ -52,8 +53,15 @@ fun AppComposable(koin: Koin) {
                 )
             }
             composable<AppRoutes.Auth> {
+                AuthComposable(
+                    viewModel = viewModel {
+                        koin.get { parametersOf(appNavigation) }
+                    }
+                )
+            }
+            composable<AppRoutes.DoorbellList> {
                 Text(
-                    text = "Auth",
+                    text = "DoorbellList",
                     modifier = Modifier
                         .fillMaxWidth()
                         .fillMaxHeight()

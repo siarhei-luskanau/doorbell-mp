@@ -65,6 +65,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":navigation"))
             implementation(project(":sharedCore:coreCommon"))
+            implementation(project(":sharedUi:uiAuth"))
             implementation(project(":sharedUi:uiPermissions"))
             implementation(project(":sharedUi:uiSplash"))
             implementation(compose.components.resources)

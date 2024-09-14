@@ -9,6 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":sharedCore:coreCommon"))
+            implementation(project(":sharedUi:uiAuth"))
             implementation(project(":sharedUi:uiCommon"))
             implementation(project(":sharedUi:uiPermissions"))
             implementation(project(":sharedUi:uiSplash"))

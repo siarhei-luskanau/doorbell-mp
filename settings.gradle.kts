@@ -3,7 +3,7 @@ include(
     ":composeApp",
     ":navigation",
     ":sharedCore:coreCommon",
-    // ":sharedCore:coreFirebase",
+    ":sharedUi:uiAuth",
     ":sharedUi:uiCommon",
     ":sharedUi:uiPermissions",
     ":sharedUi:uiSplash"
