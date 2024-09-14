@@ -5,10 +5,11 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
-    alias(libs.plugins.multiplatform)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.multiplatform)
     id("testOptionsConvention")
 }
 
@@ -146,7 +147,12 @@ compose.desktop {
 }
 
 dependencies {
-    implementation(platform(libs.google.firebase.bom))
+    ksp(libs.koin.ksp.compiler)
+    debugImplementation(libs.leakcanary.android)
+}
+
+ksp {
+    arg("KOIN_CONFIG_CHECK", "true")
 }
 
 apply(plugin = "com.google.gms.google-services")

@@ -21,9 +21,7 @@ import org.koin.core.parameter.parametersOf
 import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsComposable
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsInitializer
-import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsViewModel
 import siarhei.luskanau.doorbell.mp.ui.splash.SplashComposable
-import siarhei.luskanau.doorbell.mp.ui.splash.SplashViewModel
 
 @Composable
 fun AppComposable(koin: Koin) {
@@ -38,17 +36,13 @@ fun AppComposable(koin: Koin) {
         ) {
             composable<AppRoutes.Splash> {
                 SplashComposable(
-                    viewModel = viewModel {
-                        koin.get<SplashViewModel> {
-                            parametersOf(appNavigation)
-                        }
-                    }
+                    viewModel = viewModel { koin.get { parametersOf(appNavigation) } }
                 )
             }
             composable<AppRoutes.Permissions> {
                 PermissionsComposable(
                     viewModel = viewModel {
-                        koin.get<PermissionsViewModel> {
+                        koin.get {
                             parametersOf(
                                 permissionInitializer.getPermissionsController(),
                                 appNavigation

@@ -3,8 +3,10 @@ package siarhei.luskanau.doorbell.mp.ui.permissions
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.annotation.Factory
 import org.koin.core.annotation.InjectedParam
 
+@Factory
 class PermissionsViewModelEmpty(
     @InjectedParam private val permissionsNavigationCallback: PermissionsNavigationCallback
 ) : PermissionsViewModel() {
