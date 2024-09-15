@@ -1,5 +1,5 @@
 plugins {
-    id("composeMultiplatformConvention")
+    id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
     alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.google.ksp)

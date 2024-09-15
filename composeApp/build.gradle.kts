@@ -73,7 +73,6 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
-            implementation(libs.androidx.splashscreen)
             implementation(libs.koin.core)
         }
 
@@ -90,6 +89,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.uiTooling)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.splashscreen)
         }
 
         jvmMain.dependencies {

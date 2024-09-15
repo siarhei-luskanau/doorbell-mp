@@ -1,6 +1,8 @@
 plugins {
+    id("gsParserConvention")
     id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
+    alias(libs.plugins.buildConfig)
     alias(libs.plugins.google.ksp)
 }
 
@@ -22,4 +24,43 @@ dependencies {
 
 ksp {
     arg("KOIN_CONFIG_CHECK", "true")
+}
+
+buildConfig {
+    packageName("siarhei.luskanau.doorbell.mp.core.firebase")
+    useKotlinOutput {
+        topLevelConstants = true
+        internalVisibility = true
+    }
+    val googleServicesJsonParser = GoogleServicesJsonParser(
+        googleServicesJsonFile = File(
+            File(rootProject.rootDir, "composeApp"),
+            "google-services.json"
+        ),
+        packageName = "siarhei.luskanau.doorbell.mp.app"
+    )
+    sourceSets.getByName("jvmMain") {
+        buildConfigField(
+            "String",
+            "google_api_key",
+            "\"${googleServicesJsonParser.googleApiKey()}\""
+        )
+        buildConfigField("String", "google_app_id", "\"${googleServicesJsonParser.googleAppId()}\"")
+        buildConfigField(
+            "String",
+            "firebase_database_url",
+            "\"${googleServicesJsonParser.firebaseDatabaseUrl()}\""
+        )
+        buildConfigField(
+            "String",
+            "gcm_defaultSenderId",
+            "\"${googleServicesJsonParser.gcmDefaultSenderId()}\""
+        )
+        buildConfigField(
+            "String",
+            "google_storage_bucket",
+            "\"${googleServicesJsonParser.googleStorageBucket()}\""
+        )
+        buildConfigField("String", "project_id", "\"${googleServicesJsonParser.projectId()}\"")
+    }
 }

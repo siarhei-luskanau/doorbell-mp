@@ -10,6 +10,7 @@ include(
 )
 
 pluginManagement {
+    includeBuild("convention-plugin-gs-parser")
     includeBuild("convention-plugin-multiplatform")
     includeBuild("convention-plugin-test-option")
     repositories {

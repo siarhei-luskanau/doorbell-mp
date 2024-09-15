@@ -1,10 +1,13 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 plugins {
     id("com.android.library")
+    id("org.jetbrains.compose")
     kotlin("multiplatform")
+    kotlin("plugin.compose")
 }
 
 kotlin {
@@ -55,6 +58,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.runtime)
             implementation(libs.findLibrary("jetbrains-lifecycle-viewmodel-compose").get())
             implementation(libs.findLibrary("jetbrains-navigation-compose").get())
             implementation(libs.findLibrary("koin-annotations").get())
@@ -63,17 +71,22 @@ kotlin {
         }
 
         commonTest.dependencies {
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
             implementation(kotlin("test"))
         }
 
         androidMain.dependencies {
+            implementation(compose.uiTooling)
         }
 
         jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
             implementation(libs.findLibrary("kotlinx-coroutines-swing").get())
         }
 
         jsMain.dependencies {
+            implementation(compose.html.core)
         }
 
         iosMain.dependencies {
@@ -87,6 +100,7 @@ android {
         minSdk = libs.findVersion("build-android-minSdk").get().requiredVersion.toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildFeatures.compose = true
     compileOptions {
         sourceCompatibility = JavaVersion.valueOf(
             libs.findVersion("build-javaVersion").get().requiredVersion

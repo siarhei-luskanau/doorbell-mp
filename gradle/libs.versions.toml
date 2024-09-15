@@ -9,11 +9,13 @@ build-android-minSdk = "24"
 build-android-targetSdk = "35"
 build-javaVersion = "VERSION_21"
 build-jvmTarget = "21"
+buildConfig = "5.4.0"
 compose = "1.7.0-beta02"
 compose-screenshot = "0.0.1-alpha07"
 detekt = "1.23.7"
 google-ksp = "2.0.20-1.0.25"
 google-services = "4.4.2"
+gson = "2.11.0"
 javax-json = "1.1.4"
 jetbrains-lifecycle = "2.8.2"
 jetbrains-navigation = "2.8.0-alpha10"
@@ -33,6 +35,7 @@ androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref =
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
 jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
@@ -52,6 +55,7 @@ moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", ve
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-screenshot = { id = "com.android.compose.screenshot", version.ref = "compose-screenshot"}
