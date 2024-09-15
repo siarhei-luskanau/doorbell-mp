@@ -184,24 +184,6 @@ tasks.register("ciIos") {
                     "-allowProvisioningUpdates"
                 )
             )
-            // iosAppNativeUi
-            runExec(
-                listOf(
-                    "xcodebuild",
-                    "-project",
-                    "${rootDir.path}/iosAppNativeUi/iosApp.xcodeproj",
-                    "-scheme",
-                    "iosApp",
-                    "-configuration",
-                    "Debug",
-                    "OBJROOT=${rootDir.path}/build/ios",
-                    "SYMROOT=${rootDir.path}/build/ios",
-                    "-destination",
-                    "id=${device?.getString("udid")}",
-                    "-allowProvisioningDeviceRegistration",
-                    "-allowProvisioningUpdates"
-                )
-            )
         }
     }
 }

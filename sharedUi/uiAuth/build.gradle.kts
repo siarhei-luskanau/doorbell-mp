@@ -7,7 +7,9 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":sharedCore:coreFirebase"))
             implementation(project(":sharedUi:uiCommon"))
+            implementation(libs.gitlive.firebase.auth)
         }
     }
 }

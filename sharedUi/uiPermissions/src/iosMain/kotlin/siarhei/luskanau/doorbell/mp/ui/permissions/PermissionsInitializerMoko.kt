@@ -8,7 +8,7 @@ import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
 import org.koin.core.annotation.Single
 
 @Single
-class PermissionsInitializerMoko : PermissionsInitializer {
+internal class PermissionsInitializerMoko : PermissionsInitializer {
 
     private var permissionsController: PermissionsController? = null
 

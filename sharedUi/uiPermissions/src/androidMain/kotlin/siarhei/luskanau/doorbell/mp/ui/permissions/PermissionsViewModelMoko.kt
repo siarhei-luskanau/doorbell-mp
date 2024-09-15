@@ -13,7 +13,7 @@ import org.koin.core.annotation.Factory
 import org.koin.core.annotation.InjectedParam
 
 @Factory
-class PermissionsViewModelMoko(
+internal class PermissionsViewModelMoko(
     @InjectedParam private val permissionsController: PermissionsController,
     @InjectedParam private val permissionsNavigationCallback: PermissionsNavigationCallback
 ) : PermissionsViewModel() {

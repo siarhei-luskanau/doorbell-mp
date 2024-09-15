@@ -9,6 +9,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":sharedCore:coreCommon"))
+            implementation(libs.gitlive.firebase.auth)
         }
     }
 }
@@ -39,28 +41,34 @@ buildConfig {
         ),
         packageName = "siarhei.luskanau.doorbell.mp.app"
     )
-    sourceSets.getByName("jvmMain") {
-        buildConfigField(
-            "String",
-            "google_api_key",
-            "\"${googleServicesJsonParser.googleApiKey()}\""
-        )
-        buildConfigField("String", "google_app_id", "\"${googleServicesJsonParser.googleAppId()}\"")
-        buildConfigField(
-            "String",
-            "firebase_database_url",
-            "\"${googleServicesJsonParser.firebaseDatabaseUrl()}\""
-        )
-        buildConfigField(
-            "String",
-            "gcm_defaultSenderId",
-            "\"${googleServicesJsonParser.gcmDefaultSenderId()}\""
-        )
-        buildConfigField(
-            "String",
-            "google_storage_bucket",
-            "\"${googleServicesJsonParser.googleStorageBucket()}\""
-        )
-        buildConfigField("String", "project_id", "\"${googleServicesJsonParser.projectId()}\"")
+    listOf("jvmMain", "jsMain").forEach { sourceSetName ->
+        sourceSets.getByName(sourceSetName) {
+            buildConfigField(
+                "String",
+                "google_api_key",
+                "\"${googleServicesJsonParser.googleApiKey()}\""
+            )
+            buildConfigField(
+                "String",
+                "google_app_id",
+                "\"${googleServicesJsonParser.googleAppId()}\""
+            )
+            buildConfigField(
+                "String",
+                "firebase_database_url",
+                "\"${googleServicesJsonParser.firebaseDatabaseUrl()}\""
+            )
+            buildConfigField(
+                "String",
+                "gcm_defaultSenderId",
+                "\"${googleServicesJsonParser.gcmDefaultSenderId()}\""
+            )
+            buildConfigField(
+                "String",
+                "google_storage_bucket",
+                "\"${googleServicesJsonParser.googleStorageBucket()}\""
+            )
+            buildConfigField("String", "project_id", "\"${googleServicesJsonParser.projectId()}\"")
+        }
     }
 }

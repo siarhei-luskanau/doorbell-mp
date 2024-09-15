@@ -13,6 +13,7 @@ buildConfig = "5.4.0"
 compose = "1.7.0-beta02"
 compose-screenshot = "0.0.1-alpha07"
 detekt = "1.23.7"
+gitlive-firebase = "2.1.0"
 google-ksp = "2.0.20-1.0.25"
 google-services = "4.4.2"
 gson = "2.11.0"
@@ -35,6 +36,7 @@ androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref =
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
+gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
 javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }

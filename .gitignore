@@ -16,5 +16,4 @@ Pods/
 *yarn.lock
 /iosAppComposeUi/iosApp.xcworkspace/contents.xcworkspacedata
 /iosAppComposeUi/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-/iosAppNativeUi/iosApp.xcworkspace/contents.xcworkspacedata
-/iosAppNativeUi/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/iosAppComposeUi/iosApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

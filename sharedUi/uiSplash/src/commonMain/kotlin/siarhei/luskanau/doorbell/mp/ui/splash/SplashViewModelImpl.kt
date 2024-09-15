@@ -7,7 +7,7 @@ import org.koin.core.annotation.Factory
 import org.koin.core.annotation.InjectedParam
 
 @Factory
-class SplashViewModelImpl(
+internal class SplashViewModelImpl(
     @InjectedParam private val splashNavigationCallback: SplashNavigationCallback
 ) : SplashViewModel() {
 
