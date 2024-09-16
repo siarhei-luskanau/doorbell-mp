@@ -3,6 +3,7 @@ plugins {
     id("testOptionsConvention")
     alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.google.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 kotlin {
     sourceSets {
@@ -10,6 +11,7 @@ kotlin {
             implementation(project(":sharedCore:coreFirebase"))
             implementation(project(":sharedUi:uiCommon"))
             implementation(libs.gitlive.firebase.auth)
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }

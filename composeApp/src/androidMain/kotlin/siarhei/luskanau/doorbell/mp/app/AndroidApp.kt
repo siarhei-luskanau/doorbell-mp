@@ -9,7 +9,7 @@ import siarhei.luskanau.doorbell.mp.app.di.initKoin
 
 class AndroidApp : Application() {
 
-    val koin: Koin by lazy {
+    private val koin: Koin by lazy {
         initKoin(
             module {
                 single<Context> { applicationContext }
@@ -19,6 +19,7 @@ class AndroidApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        com.google.firebase.auth.FirebaseAuth.getInstance()
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
