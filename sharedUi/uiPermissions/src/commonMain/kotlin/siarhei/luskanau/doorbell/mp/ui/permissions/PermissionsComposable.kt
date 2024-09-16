@@ -3,7 +3,7 @@ package siarhei.luskanau.doorbell.mp.ui.permissions
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -31,11 +31,7 @@ import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 
 @Composable
 fun PermissionsComposable(viewModel: PermissionsViewModel) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-    ) {
+    Column(modifier = Modifier.fillMaxSize()) {
         val permissionsViewState by viewModel.viewState.collectAsState()
         Spacer(modifier = Modifier.height(48.dp))
         Text(
@@ -91,7 +87,7 @@ fun PermissionsComposable(viewModel: PermissionsViewModel) {
                 .fillMaxWidth()
                 .padding(16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
+                containerColor = MaterialTheme.colorScheme.primaryContainer
             )
         ) {
             Text(
@@ -101,6 +97,7 @@ fun PermissionsComposable(viewModel: PermissionsViewModel) {
                     -> "Request permission"
                     PermissionsViewState.DeniedPermissionsViewState -> "Open Settings"
                 },
+                color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center
             )
         }
