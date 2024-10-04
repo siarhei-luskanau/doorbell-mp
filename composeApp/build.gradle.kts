@@ -32,8 +32,8 @@ kotlin {
         instrumentedTestVariant {
             sourceSetTree.set(KotlinSourceSetTree.test)
             dependencies {
-                debugImplementation(libs.androidx.testManifest)
-                implementation(libs.androidx.junit4)
+                debugImplementation(libs.androidx.compose.test.manifest)
+                implementation(libs.androidx.compose.test.junit4)
             }
         }
     }
