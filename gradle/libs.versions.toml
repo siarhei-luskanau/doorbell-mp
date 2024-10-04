@@ -1,9 +1,9 @@
 [versions]
 agp = "8.7.0"
 androidx-activity = "1.9.2"
+androidx-compose-ui-test = "1.7.3"
 androidx-monitor = "1.7.2"
 androidx-splashscreen = "1.0.1"
-androidx-uiTest = "1.7.3"
 build-android-compileSdk = "35"
 build-android-minSdk = "24"
 build-android-targetSdk = "35"
@@ -32,10 +32,10 @@ moko = "0.18.0"
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
-androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
+androidx-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-compose-ui-test" }
+androidx-compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-compose-ui-test" }
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
-androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
