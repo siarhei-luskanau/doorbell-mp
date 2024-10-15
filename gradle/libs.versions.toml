@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.0"
+agp = "8.7.1"
 androidx-activity = "1.9.2"
 androidx-compose-ui-test = "1.7.3"
 androidx-monitor = "1.7.2"
