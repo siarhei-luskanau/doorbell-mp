@@ -3,11 +3,13 @@ plugins {
     id("testOptionsConvention")
     alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.google.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.gitlive.firebase.auth)
+            implementation(libs.kotlinx.serialization.json)
             implementation(projects.sharedCore.coreFirebase)
             implementation(projects.sharedUi.uiCommon)
         }

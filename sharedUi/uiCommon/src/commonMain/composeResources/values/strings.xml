@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">DoorbellMP</string>
     <string name="back_button">Back</string>
+    <string name="general_error_message">Something went wrong</string>
+    <string name="ui_auth_confirm_password">Confirm Password</string>
+    <string name="ui_auth_continue">Continue</string>
+    <string name="ui_auth_create_password">Create Password</string>
+    <string name="ui_auth_forgot_password_complete_title">Email is sent</string>
+    <string name="ui_auth_forgot_password_title">Forgot password</string>
+    <string name="ui_auth_hide_password">Hide Password</string>
+    <string name="ui_auth_password_title">Password</string>
+    <string name="ui_auth_show_password">Show Password</string>
+    <string name="ui_auth_username">Username</string>
+    <string name="ui_permissions_message_denied">The camera is important for this app. Please grant the permission in the application settings</string>
+    <string name="ui_permissions_message_granted">The camera permission is granted</string>
+    <string name="ui_permissions_message_not_granted">The camera is important for this app. Please grant the permission</string>
+    <string name="ui_permissions_open_settings">Open Settings</string>
+    <string name="ui_permissions_request_permission">Request permission</string>
+    <string name="ui_permissions_title">Camera permission</string>
 </resources>

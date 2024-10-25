@@ -1,3 +1,5 @@
 package siarhei.luskanau.doorbell.mp.ui.auth
 
-interface AuthNavigationCallback
+interface AuthNavigationCallback {
+    fun onAuthGraphCompleted()
+}

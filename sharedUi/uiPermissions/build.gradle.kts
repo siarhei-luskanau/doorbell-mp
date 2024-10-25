@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.google.ksp)
 }
+
 kotlin {
     sourceSets {
         commonMain.dependencies {
