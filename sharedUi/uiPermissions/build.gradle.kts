@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedUi:uiCommon"))
+            implementation(projects.sharedUi.uiCommon)
         }
         androidMain.dependencies {
             implementation(libs.moko.permissions.compose)

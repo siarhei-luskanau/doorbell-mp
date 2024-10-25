@@ -81,7 +81,7 @@ tasks.register("ciUnitTest") {
     group = CI_GRADLE
     doLast {
         gradlew(":composeApp:jvmTest")
-        runCatching { gradlew("validateDebugScreenshotTest") }
+        gradlew("validateDebugScreenshotTest")
     }
 }
 

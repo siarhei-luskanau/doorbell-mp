@@ -8,7 +8,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedUi:uiCommon"))
+            implementation(projects.sharedUi.uiCommon)
         }
     }
 }

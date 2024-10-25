@@ -1,4 +1,5 @@
 rootProject.name = "DoorbellMp"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
     ":composeApp",
     ":navigation",

@@ -8,12 +8,12 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedCore:coreCommon"))
-            implementation(project(":sharedUi:uiAuth"))
-            implementation(project(":sharedUi:uiCommon"))
-            implementation(project(":sharedUi:uiPermissions"))
-            implementation(project(":sharedUi:uiSplash"))
             implementation(libs.kotlinx.serialization.json)
+            implementation(projects.sharedCore.coreCommon)
+            implementation(projects.sharedUi.uiAuth)
+            implementation(projects.sharedUi.uiCommon)
+            implementation(projects.sharedUi.uiPermissions)
+            implementation(projects.sharedUi.uiSplash)
         }
     }
 }

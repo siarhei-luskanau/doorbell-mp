@@ -13,13 +13,15 @@ class AppNavigation(private val navHostController: NavHostController) :
     fun goBack(): Boolean = navHostController.popBackStack()
 
     override fun onPermissionScreenCompleted() = navHostController.navigate(AppRoutes.Auth) {
-        popUpTo(AppRoutes.Permissions) {
+        launchSingleTop = true
+        popUpTo<AppRoutes.Permissions> {
             inclusive = true
         }
     }
 
     override fun onSplashScreenCompleted() = navHostController.navigate(AppRoutes.Permissions) {
-        popUpTo(AppRoutes.Splash) {
+        launchSingleTop = true
+        popUpTo<AppRoutes.Splash> {
             inclusive = true
         }
     }

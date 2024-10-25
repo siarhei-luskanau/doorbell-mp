@@ -63,12 +63,6 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":navigation"))
-            implementation(project(":sharedCore:coreCommon"))
-            implementation(project(":sharedCore:coreFirebase"))
-            implementation(project(":sharedUi:uiAuth"))
-            implementation(project(":sharedUi:uiPermissions"))
-            implementation(project(":sharedUi:uiSplash"))
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
@@ -76,6 +70,12 @@ kotlin {
             implementation(compose.runtime)
             implementation(libs.gitlive.firebase.auth)
             implementation(libs.koin.core)
+            implementation(projects.navigation)
+            implementation(projects.sharedCore.coreCommon)
+            implementation(projects.sharedCore.coreFirebase)
+            implementation(projects.sharedUi.uiAuth)
+            implementation(projects.sharedUi.uiPermissions)
+            implementation(projects.sharedUi.uiSplash)
         }
 
         commonTest.dependencies {

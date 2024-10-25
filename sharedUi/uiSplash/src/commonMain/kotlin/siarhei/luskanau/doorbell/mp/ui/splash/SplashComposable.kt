@@ -1,8 +1,7 @@
 package siarhei.luskanau.doorbell.mp.ui.splash
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,9 +16,7 @@ import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 @Composable
 fun SplashComposable(viewModel: SplashViewModel) {
     Image(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
+        modifier = Modifier.fillMaxSize(),
         painter = painterResource(UiCommonRes.drawable.ic_android),
         colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.secondary),
         contentDescription = null

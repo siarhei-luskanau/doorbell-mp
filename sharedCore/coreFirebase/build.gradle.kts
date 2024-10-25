@@ -9,8 +9,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":sharedCore:coreCommon"))
             implementation(libs.gitlive.firebase.auth)
+            implementation(projects.sharedCore.coreCommon)
         }
     }
 }
