@@ -1,36 +1,24 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.google.devtools.ksp")
     kotlin("multiplatform")
     kotlin("plugin.compose")
 }
 
 kotlin {
+    jvmToolchain(libs.findVersion("build-jvmTarget").get().requiredVersion.toInt())
 
     androidTarget {
-        compilations.all {
-            compileTaskProvider {
-                compilerOptions {
-                    jvmTarget.set(
-                        JvmTarget.fromTarget(
-                            libs.findVersion("build-jvmTarget").get().requiredVersion
-                        )
-                    )
-                    freeCompilerArgs.add(
-                        "-Xjdk-release=${
-                            JavaVersion.valueOf(
-                                libs.findVersion("build-javaVersion").get().requiredVersion
-                            )
-                        }"
-                    )
-                }
-            }
-        }
+        // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
     }
 
     jvm()
@@ -39,11 +27,6 @@ kotlin {
         browser()
         binaries.executable()
     }
-
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
 
     listOf(
         iosX64(),
@@ -111,4 +94,19 @@ android {
         )
     }
     packaging.resources.excludes.add("META-INF/**")
+}
+
+dependencies {
+    // KSP Tasks
+    add("kspAndroid", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspCommonMainMetadata", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspIosArm64", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspIosSimulatorArm64", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspIosX64", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspJs", libs.findLibrary("koin-ksp-compiler").get())
+    add("kspJvm", libs.findLibrary("koin-ksp-compiler").get())
+}
+
+ksp {
+    arg("KOIN_CONFIG_CHECK", "true")
 }

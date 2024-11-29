@@ -1,7 +1,5 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -14,28 +12,11 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(libs.versions.build.jvmTarget.get().toInt())
+
     androidTarget {
-        compilations.all {
-            compileTaskProvider {
-                compilerOptions {
-                    jvmTarget.set(JvmTarget.fromTarget(libs.versions.build.jvmTarget.get()))
-                    freeCompilerArgs.add(
-                        "-Xjdk-release=${
-                            JavaVersion.valueOf(libs.versions.build.javaVersion.get())
-                        }"
-                    )
-                }
-            }
-        }
         // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant {
-            sourceSetTree.set(KotlinSourceSetTree.test)
-            dependencies {
-                debugImplementation(libs.androidx.compose.test.manifest)
-                implementation(libs.androidx.compose.test.junit4)
-            }
-        }
+        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
     }
 
     jvm()
@@ -44,11 +25,6 @@ kotlin {
         browser()
         binaries.executable()
     }
-
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
 
     listOf(
         iosX64(),
@@ -151,8 +127,18 @@ compose.desktop {
 }
 
 dependencies {
-    ksp(libs.koin.ksp.compiler)
+    // KSP Tasks
+    add("kspAndroid", libs.koin.ksp.compiler)
+    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
+    add("kspIosArm64", libs.koin.ksp.compiler)
+    add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
+    add("kspIosX64", libs.koin.ksp.compiler)
+    add("kspJs", libs.koin.ksp.compiler)
+    add("kspJvm", libs.koin.ksp.compiler)
     debugImplementation(libs.leakcanary.android)
+    // https://developer.android.com/develop/ui/compose/testing#setup
+    debugImplementation(libs.androidx.compose.test.manifest)
+    implementation(libs.androidx.compose.test.junit4)
 }
 
 ksp {
