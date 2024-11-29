@@ -3,6 +3,7 @@ plugins {
     id("testOptionsConvention")
     alias(libs.plugins.compose.screenshot)
 }
+
 kotlin {
     sourceSets {
         commonMain.dependencies {
