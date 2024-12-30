@@ -1,11 +1,10 @@
 @file:Suppress("PropertyName")
 
+import groovy.json.JsonSlurper
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
-import java.io.StringReader
 import java.util.Properties
-import javax.json.Json
 import org.apache.tools.ant.taskdefs.condition.Os
 
 println("gradle.startParameter.taskNames: ${gradle.startParameter.taskNames}")
@@ -148,25 +147,26 @@ tasks.register("ciIos") {
                     "-j"
                 )
             )
-            val devicesList = Json.createReader(StringReader(devicesJson)).use { it.readObject() }
-                .getJsonObject("devices")
+
+            @Suppress("UNCHECKED_CAST")
+            val devicesList = (JsonSlurper().parseText(devicesJson) as Map<String, *>)
+                .let { it["devices"] as Map<String, *> }
                 .let { devicesMap ->
                     devicesMap.keys
                         .filter { it.startsWith("com.apple.CoreSimulator.SimRuntime.iOS") }
-                        .map { devicesMap.getJsonArray(it) }
+                        .map { devicesMap[it] as List<*> }
                 }
-                .map { jsonArray -> jsonArray.map { it.asJsonObject() } }
+                .map { jsonArray -> jsonArray.map { it as Map<String, *> } }
                 .flatten()
-                .filter { it.getBoolean("isAvailable") }
+                .filter { it["isAvailable"] as Boolean }
                 .filter {
                     listOf("iphone 1").any { device ->
-                        it.getString("name").contains(device, true)
+                        (it["name"] as String).contains(device, true)
                     }
                 }
             println("Devices:${devicesList.joinToString { "\n" + it["udid"] + ": " + it["name"] }}")
             val device = devicesList.firstOrNull()
-            println("Selected:\n${device?.getString("udid")}: ${device?.getString("name")}")
-            // iosAppComposeUi
+            println("Selected:\n${device?.get("udid")}: ${device?.get("name")}")
             runExec(
                 listOf(
                     "xcodebuild",
@@ -179,7 +179,7 @@ tasks.register("ciIos") {
                     "OBJROOT=${rootDir.path}/build/ios",
                     "SYMROOT=${rootDir.path}/build/ios",
                     "-destination",
-                    "id=${device?.getString("udid")}",
+                    "id=${device?.get("udid")}",
                     "-allowProvisioningDeviceRegistration",
                     "-allowProvisioningUpdates"
                 )
@@ -198,11 +198,12 @@ tasks.register("ciSdkManagerLicenses") {
                 private var counter = 0
                 override fun read(): Int = yesString[counter % 2].also { counter++ }.code
             }
-            exec {
+            providers.exec {
                 executable = sdkManagerFile.absolutePath
                 args = listOf("--list", "--sdk_root=$sdkDirPath")
                 println("exec: ${this.commandLine.joinToString(separator = " ")}")
-            }.apply { println("ExecResult: $this") }
+            }.apply { println("ExecResult: ${this.result.get()}") }
+            @Suppress("DEPRECATION")
             exec {
                 executable = sdkManagerFile.absolutePath
                 args = listOf("--licenses", "--sdk_root=$sdkDirPath")
@@ -219,6 +220,7 @@ fun runExec(commands: List<String>): String = object : ByteArrayOutputStream() {
         super.write(p0, p1, p2)
     }
 }.let { resultOutputStream ->
+    @Suppress("DEPRECATION")
     exec {
         if (System.getenv("JAVA_HOME") == null) {
             System.getProperty("java.home")?.let { javaHome ->
@@ -235,7 +237,7 @@ fun runExec(commands: List<String>): String = object : ByteArrayOutputStream() {
 }
 
 fun gradlew(vararg tasks: String, addToSystemProperties: Map<String, String>? = null) {
-    exec {
+    providers.exec {
         executable = File(
             project.rootDir,
             if (Os.isFamily(Os.FAMILY_WINDOWS)) "gradlew.bat" else "gradlew"
@@ -277,7 +279,7 @@ fun gradlew(vararg tasks: String, addToSystemProperties: Map<String, String>? = 
             }
         }
         println("commandLine: ${this.commandLine}")
-    }.apply { println("ExecResult: $this") }
+    }.apply { println("ExecResult: ${this.result.get()}") }
 }
 
 fun getAndroidSdkPath(rootDir: File): String? = Properties().apply {

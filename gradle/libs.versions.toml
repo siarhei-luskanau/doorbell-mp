@@ -17,7 +17,6 @@ gitlive-firebase = "2.1.0"
 google-ksp = "2.1.0-1.0.29"
 google-services = "4.4.2"
 gson = "2.11.0"
-javax-json = "1.1.4"
 jetbrains-lifecycle = "2.8.4"
 jetbrains-navigation = "2.8.0-alpha11"
 koin = "4.0.1"
@@ -39,8 +38,6 @@ androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.re
 gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
 google-ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "google-ksp" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-javax-json-api = { module = "javax.json:javax.json-api", version.ref = "javax-json" }
-javax-json-glassfish = { module = "org.glassfish:javax.json", version.ref = "javax-json" }
 jetbrains-compose-compiler-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 jetbrains-compose-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
 jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-lifecycle" }
