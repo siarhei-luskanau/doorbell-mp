@@ -190,7 +190,7 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew tasks --stacktrace
+      - run: ./gradlew compileIosMainKotlinMetadata --stacktrace
 
       - run: ./gradlew ciIos --stacktrace
 

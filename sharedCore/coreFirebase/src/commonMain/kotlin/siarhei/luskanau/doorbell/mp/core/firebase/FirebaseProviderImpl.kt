@@ -7,13 +7,14 @@ import dev.gitlive.firebase.auth.FirebaseAuth
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.initialize
 import kotlinx.coroutines.withContext
+import org.koin.core.annotation.Provided
 import org.koin.core.annotation.Single
 import siarhei.luskanau.doorbell.mp.core.common.DispatcherSet
 
 @Single
 internal class FirebaseProviderImpl(
-    private val dispatcherSet: DispatcherSet,
-    private val firebaseContextHolder: FirebaseContextHolder
+    @Provided private val dispatcherSet: DispatcherSet,
+    @Provided private val firebaseContextHolder: FirebaseContextHolder
 ) : FirebaseProvider {
 
     private var firebaseApp: FirebaseApp? = null
