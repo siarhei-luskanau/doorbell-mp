@@ -10,9 +10,11 @@ kotlin {
             implementation(projects.sharedUi.uiCommon)
         }
         androidMain.dependencies {
+            implementation(libs.moko.permissions.camera)
             implementation(libs.moko.permissions.compose)
         }
         iosMain.dependencies {
+            implementation(libs.moko.permissions.camera)
             implementation(libs.moko.permissions.compose)
         }
     }
