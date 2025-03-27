@@ -40,14 +40,18 @@ jobs:
 
 
   UpdateScreenshot:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
 
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
+
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
 
       - uses: actions/setup-java@v4
         with:
