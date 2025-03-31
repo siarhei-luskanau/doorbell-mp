@@ -48,8 +48,9 @@ kotlin {
             implementation(compose.runtime)
             implementation(libs.findLibrary("jetbrains-lifecycle-viewmodel-compose").get())
             implementation(libs.findLibrary("jetbrains-navigation-compose").get())
-            implementation(libs.findLibrary("koin-core").get())
+            implementation(libs.findLibrary("koin-compose").get())
             implementation(libs.findLibrary("kotlinx-coroutines-core").get())
+            implementation(project.dependencies.platform(libs.findLibrary("koin-bom").get()))
         }
 
         commonTest.dependencies {

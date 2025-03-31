@@ -3,9 +3,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import java.awt.Dimension
-import org.koin.dsl.module
-import siarhei.luskanau.doorbell.mp.app.di.initKoin
-import siarhei.luskanau.doorbell.mp.navigation.AppComposable
+import siarhei.luskanau.doorbell.mp.app.KoinAppComposable
 
 fun main() = application {
     Window(
@@ -14,7 +12,6 @@ fun main() = application {
         onCloseRequest = ::exitApplication
     ) {
         window.minimumSize = Dimension(350, 600)
-        val koin = initKoin(module {}).koin
-        AppComposable(koin = koin)
+        KoinAppComposable()
     }
 }

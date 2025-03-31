@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
-import org.koin.core.Koin
+import org.koin.compose.getKoin
 import org.koin.core.parameter.parametersOf
 import siarhei.luskanau.doorbell.mp.ui.auth.authGraph
 import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
@@ -23,7 +23,8 @@ import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsInitializer
 import siarhei.luskanau.doorbell.mp.ui.splash.SplashComposable
 
 @Composable
-fun AppComposable(koin: Koin) {
+fun AppComposable() {
+    val koin = getKoin()
     AppTheme {
         val permissionInitializer: PermissionsInitializer = koin.get()
         permissionInitializer.initPermissionsController()
