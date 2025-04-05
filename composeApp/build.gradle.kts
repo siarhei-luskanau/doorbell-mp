@@ -65,6 +65,7 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
             implementation(libs.gitlive.firebase.auth)
+            implementation(libs.jetbrains.navigation.compose)
         }
 
         androidNativeTest.dependencies {
@@ -133,6 +134,10 @@ compose.desktop {
 }
 
 dependencies {
+    // https://developer.android.com/develop/ui/compose/testing#setup
+    androidTestImplementation(libs.androidx.uitest.junit4)
+    debugImplementation(libs.androidx.uitest.testManifest)
+
     // KSP Tasks
     add("kspAndroid", libs.koin.ksp.compiler)
     add("kspCommonMainMetadata", libs.koin.ksp.compiler)
