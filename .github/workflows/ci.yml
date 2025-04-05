@@ -193,3 +193,5 @@ jobs:
 
       - run: ./gradlew ciIos --stacktrace
 
+      - run: ./gradlew composeApp:iosSimulatorArm64Test --stacktrace
+
