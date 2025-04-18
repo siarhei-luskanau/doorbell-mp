@@ -32,30 +32,6 @@ allprojects {
 
 val CI_GRADLE = "CI_GRADLE"
 
-tasks.register("devAll") {
-    group = CI_GRADLE
-    val injected = project.objects.newInstance<Injected>()
-    doLast {
-        injected.gradlew(
-            "clean",
-            "ktlintFormat"
-        )
-        injected.gradlew(
-            "ciLint",
-            "ciUnitTest",
-            "ciAndroid",
-            "ciDesktop"
-        )
-        injected.gradlew("ciIos")
-        injected.gradlew("ciBrowser")
-        injected.gradlew("updateDebugScreenshotTest")
-        injected.gradlew("validateDebugScreenshotTest")
-        injected.gradlew("jsBrowserProductionWebpack")
-        injected.gradlew("ciSdkManagerLicenses")
-        injected.gradlew("ciAndroidEmulator")
-    }
-}
-
 tasks.register("ciLint") {
     group = CI_GRADLE
     val injected = project.objects.newInstance<Injected>()
@@ -77,19 +53,6 @@ tasks.register("ciUpdateScreenshot") {
                 "ktlintFormat",
                 "updateDebugScreenshotTest"
             )
-        } catch (error: Exception) {
-            error.printStackTrace()
-        }
-    }
-}
-
-tasks.register("ciUnitTest") {
-    group = CI_GRADLE
-    val injected = project.objects.newInstance<Injected>()
-    doLast {
-        injected.gradlew(":composeApp:jvmTest")
-        try {
-            injected.gradlew("validateDebugScreenshotTest")
         } catch (error: Exception) {
             error.printStackTrace()
         }
@@ -131,11 +94,19 @@ tasks.register("ciDesktop") {
     }
 }
 
-tasks.register("ciBrowser") {
+tasks.register("ciJsBrowser") {
     group = CI_GRADLE
     val injected = project.objects.newInstance<Injected>()
     doLast {
         injected.gradlew(":composeApp:jsMainClasses")
+    }
+}
+
+tasks.register("ciWasmJsBrowser") {
+    group = CI_GRADLE
+    val injected = project.objects.newInstance<Injected>()
+    doLast {
+        injected.gradlew(":composeApp:wasmJsMainClasses")
     }
 }
 
