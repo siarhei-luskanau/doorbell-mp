@@ -32,7 +32,11 @@ buildConfig {
         ),
         packageName = "siarhei.luskanau.doorbell.mp.app"
     )
-    listOf("jvmMain", "jsMain").forEach { sourceSetName ->
+    listOf(
+        "jvmMain",
+        "jsMain"
+        // "wasmJsMain"
+    ).forEach { sourceSetName ->
         sourceSets.getByName(sourceSetName) {
             buildConfigField(
                 "String",
