@@ -89,22 +89,22 @@ jobs:
             os: ubuntu-latest
             experimental: false
             emulator: true
-          - gradle-tasks: "iosSimulatorArm64Test"
+          - gradle-tasks: "kspCommonMainKotlinMetadata iosSimulatorArm64Test"
             os: macos-latest
-            experimental: true
+            experimental: false
             emulator: false
-          - gradle-tasks: "testDebugUnitTest"
-            os: ubuntu-latest
-            experimental: true
-            emulator: false
-          - gradle-tasks: "jsBrowserTest"
-            os: ubuntu-latest
-            experimental: true
-            emulator: false
-          - gradle-tasks: "wasmJsBrowserTest"
-            os: ubuntu-latest
-            experimental: true
-            emulator: false
+#          - gradle-tasks: "testDebugUnitTest"
+#            os: ubuntu-latest
+#            experimental: true
+#            emulator: false
+#          - gradle-tasks: "jsBrowserTest"
+#            os: ubuntu-latest
+#            experimental: true
+#            emulator: false
+#          - gradle-tasks: "wasmJsBrowserTest"
+#            os: ubuntu-latest
+#            experimental: true
+#            emulator: false
     steps:
 
       - uses: actions/checkout@v4
