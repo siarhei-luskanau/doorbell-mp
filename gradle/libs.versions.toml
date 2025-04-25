@@ -4,7 +4,6 @@ androidx-activity = "1.10.1"
 androidx-compose-ui-test = "1.8.0"
 androidx-monitor = "1.7.2"
 androidx-splashscreen = "1.0.1"
-androidx-uiTest = "1.7.8"
 build-android-compileSdk = "35"
 build-android-minSdk = "24"
 build-android-targetSdk = "35"
@@ -36,8 +35,6 @@ androidx-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", 
 androidx-compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-compose-ui-test" }
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
-androidx-uitest-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
-androidx-uitest-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
 google-ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "google-ksp" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }

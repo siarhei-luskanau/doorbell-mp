@@ -135,8 +135,8 @@ compose.desktop {
 
 dependencies {
     // https://developer.android.com/develop/ui/compose/testing#setup
-    androidTestImplementation(libs.androidx.uitest.junit4)
-    debugImplementation(libs.androidx.uitest.testManifest)
+    androidTestImplementation(libs.androidx.compose.test.junit4)
+    debugImplementation(libs.androidx.compose.test.manifest)
 
     // KSP Tasks
     add("kspAndroid", libs.koin.ksp.compiler)
