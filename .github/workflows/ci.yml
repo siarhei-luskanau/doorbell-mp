@@ -110,12 +110,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Decode and write google-services.json
+        env:
+          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
+        env:
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
       - name: Enable KVM group perms
         if: matrix.emulator
@@ -145,12 +149,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Decode and write google-services.json
+        env:
+          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
+        env:
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
       - uses: actions/setup-java@v4
         with:
@@ -174,12 +182,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Decode and write google-services.json
+        env:
+          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
+        env:
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
       - uses: actions/setup-java@v4
         with:
@@ -199,12 +211,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Decode and write google-services.json
+        env:
+          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
+        env:
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
       - uses: actions/setup-java@v4
         with:
@@ -227,12 +243,16 @@ jobs:
 #      - uses: actions/checkout@v4
 #
 #      - name: Decode and write google-services.json
+#        env:
+#          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
 #        run: |
-#          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+#          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 #
 #      - name: Decode and write GoogleService-Info.plist
+#        env:
+#          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
 #        run: |
-#          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+#          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 #
 #      - uses: actions/setup-java@v4
 #        with:
@@ -254,12 +274,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Decode and write google-services.json
+        env:
+          ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}" | base64 -d > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
+        env:
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
+          echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
       - uses: actions/setup-java@v4
         with:
