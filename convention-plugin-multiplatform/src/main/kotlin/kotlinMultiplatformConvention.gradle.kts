@@ -74,7 +74,6 @@ kotlin {
         }
 
         jsMain.dependencies {
-            implementation(compose.html.core)
         }
 
         iosMain.dependencies {
