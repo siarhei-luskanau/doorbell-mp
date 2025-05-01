@@ -1,22 +1,24 @@
-import UIKit
+import SwiftUI
 import FirebaseCore
 import FirebaseAuth
 import ComposeApp
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-        FirebaseApp.configure()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        if let window = window {
-            window.rootViewController = MainKt.mainViewController()
-            window.makeKeyAndVisible()
+struct ComposeApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView().ignoresSafeArea(.all)
         }
-        return true
+    }
+}
+
+struct ContentView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        FirebaseApp.configure()
+        return MainKt.mainViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // Updates will be handled by Compose
     }
 }

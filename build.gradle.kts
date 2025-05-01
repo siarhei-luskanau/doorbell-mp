@@ -2,7 +2,6 @@
 
 import groovy.json.JsonSlurper
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.InputStream
 import java.util.Properties
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -18,6 +17,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.google.ksp).apply(false)
     alias(libs.plugins.google.services).apply(false)
+    alias(libs.plugins.hotReload).apply(false)
     alias(libs.plugins.multiplatform).apply(false)
 }
 

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.ksp)
+    alias(libs.plugins.hotReload)
     alias(libs.plugins.multiplatform)
     id("testOptionsConvention")
 }
@@ -87,7 +88,6 @@ kotlin {
         }
 
         jsMain.dependencies {
-            implementation(compose.html.core)
         }
 
         iosMain.dependencies {
@@ -127,8 +127,19 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.company.app.desktopApp"
+            packageName = "MultiplatformApp"
             packageVersion = "1.0.0"
+
+            linux {
+                iconFile.set(project.file("desktopAppIcons/LinuxIcon.png"))
+            }
+            windows {
+                iconFile.set(project.file("desktopAppIcons/WindowsIcon.ico"))
+            }
+            macOS {
+                iconFile.set(project.file("desktopAppIcons/MacosIcon.icns"))
+                bundleID = "org.company.app.desktopApp"
+            }
         }
     }
 }
