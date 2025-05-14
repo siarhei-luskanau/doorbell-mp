@@ -45,13 +45,15 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation("io.insert-koin:koin-compose") {
+                exclude(module = "koin-core-annotations-jvm", group = "io.insert-koin")
+            }
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
             implementation(libs.gitlive.firebase.auth)
-            implementation(libs.koin.compose)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(projects.navigation)
             implementation(projects.sharedCore.coreCommon)
