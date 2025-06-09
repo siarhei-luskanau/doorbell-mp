@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,9 +18,9 @@ import org.koin.compose.getKoin
 import org.koin.core.parameter.parametersOf
 import siarhei.luskanau.doorbell.mp.ui.auth.authGraph
 import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
-import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsComposable
 import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsInitializer
-import siarhei.luskanau.doorbell.mp.ui.splash.SplashComposable
+import siarhei.luskanau.doorbell.mp.ui.permissions.PermissionsScreen
+import siarhei.luskanau.doorbell.mp.ui.splash.SplashScreen
 
 @Preview
 @Composable
@@ -37,9 +36,7 @@ fun AppComposable() {
             startDestination = AppRoutes.Splash
         ) {
             composable<AppRoutes.Splash> {
-                SplashComposable(
-                    viewModel = viewModel { koin.get { parametersOf(appNavigation) } }
-                )
+                SplashScreen { koin.get { parametersOf(appNavigation) } }
             }
             authGraph(
                 koin = koin,
@@ -47,16 +44,14 @@ fun AppComposable() {
                 authNavigationCallback = appNavigation
             )
             composable<AppRoutes.Permissions> {
-                PermissionsComposable(
-                    viewModel = viewModel {
-                        koin.get {
-                            parametersOf(
-                                permissionInitializer.getPermissionsController(),
-                                appNavigation
-                            )
-                        }
+                PermissionsScreen {
+                    koin.get {
+                        parametersOf(
+                            permissionInitializer.getPermissionsController(),
+                            appNavigation
+                        )
                     }
-                )
+                }
             }
             composable<AppRoutes.DoorbellList> {
                 Text(

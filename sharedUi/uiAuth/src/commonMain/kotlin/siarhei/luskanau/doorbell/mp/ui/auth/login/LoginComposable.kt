@@ -27,6 +27,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -38,7 +39,13 @@ import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_show_password
 import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_username
 
 @Composable
-fun LoginComposable(viewModel: LoginViewModel) {
+internal fun LoginScreen(viewModelProvider: () -> LoginViewModel) {
+    val viewModel = viewModel { viewModelProvider() }
+    LoginComposable(viewModel = viewModel)
+}
+
+@Composable
+internal fun LoginComposable(viewModel: LoginViewModel) {
     Column(
         Modifier.fillMaxSize().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,

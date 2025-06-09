@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.jetbrains.compose.resources.painterResource
@@ -37,7 +38,13 @@ import siarhei.luskanau.doorbell.mp.ui.common.ui_permissions_request_permission
 import siarhei.luskanau.doorbell.mp.ui.common.ui_permissions_title
 
 @Composable
-fun PermissionsComposable(viewModel: PermissionsViewModel) {
+fun PermissionsScreen(viewModelProvider: () -> PermissionsViewModel) {
+    val viewModel = viewModel { viewModelProvider() }
+    PermissionsComposable(viewModel = viewModel)
+}
+
+@Composable
+internal fun PermissionsComposable(viewModel: PermissionsViewModel) {
     Column(modifier = Modifier.fillMaxSize()) {
         val permissionsViewState by viewModel.viewState.collectAsState()
         Spacer(modifier = Modifier.height(48.dp))

@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.jetbrains.compose.resources.stringResource
@@ -28,7 +29,13 @@ import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_forgot_password_title
 import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_username
 
 @Composable
-fun ForgotPasswordComposable(viewModel: ForgotPasswordViewModel) {
+internal fun ForgotPasswordScreen(viewModelProvider: () -> ForgotPasswordViewModel) {
+    val viewModel = viewModel { viewModelProvider() }
+    ForgotPasswordComposable(viewModel = viewModel)
+}
+
+@Composable
+internal fun ForgotPasswordComposable(viewModel: ForgotPasswordViewModel) {
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,

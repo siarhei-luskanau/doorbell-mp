@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import siarhei.luskanau.doorbell.mp.ui.common.Res as UiCommonRes
@@ -28,7 +29,15 @@ import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_continue
 import siarhei.luskanau.doorbell.mp.ui.common.ui_auth_forgot_password_complete_title
 
 @Composable
-fun ForgotPasswordCompleteComposable(viewModel: ForgotPasswordCompleteViewModel) {
+internal fun ForgotPasswordCompleteScreen(
+    viewModelProvider: () -> ForgotPasswordCompleteViewModel
+) {
+    val viewModel = viewModel { viewModelProvider() }
+    ForgotPasswordCompleteComposable(viewModel = viewModel)
+}
+
+@Composable
+internal fun ForgotPasswordCompleteComposable(viewModel: ForgotPasswordCompleteViewModel) {
     Column(modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.height(48.dp))
         Text(

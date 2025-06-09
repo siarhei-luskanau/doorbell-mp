@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import siarhei.luskanau.doorbell.mp.ui.common.Res as UiCommonRes
@@ -14,7 +15,13 @@ import siarhei.luskanau.doorbell.mp.ui.common.ic_android
 import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 
 @Composable
-fun SplashComposable(viewModel: SplashViewModel) {
+fun SplashScreen(viewModelProvider: () -> SplashViewModel) {
+    val viewModel = viewModel { viewModelProvider() }
+    SplashComposable(viewModel = viewModel)
+}
+
+@Composable
+internal fun SplashComposable(viewModel: SplashViewModel) {
     Image(
         modifier = Modifier.fillMaxSize(),
         painter = painterResource(UiCommonRes.drawable.ic_android),
