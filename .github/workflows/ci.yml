@@ -167,7 +167,24 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew ciAndroid --stacktrace
+      - name: Build release APK and AAB
+        run: ./gradlew ciAndroid --stacktrace
+
+      - name: Decode keystore and Sign APK/AAB
+        run: |
+          echo "${{ secrets.KEYSTORE }}" | base64 --decode > keystore.jks
+          ./gradlew signingReport
+
+      - name: Upload APK and AAB as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-artifacts
+          path: |
+            composeApp/build/outputs/apk/debug/composeApp-debug.apk
+            composeApp/build/outputs/bundle/release/app-release.aab
+
+      - name: Clean up keystore file
+        run: rm keystore.jks
 
 
 
