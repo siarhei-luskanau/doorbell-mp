@@ -63,7 +63,8 @@ tasks.register("ciAndroid") {
     group = CI_GRADLE
     val injected = project.objects.newInstance<Injected>()
     doLast {
-        injected.gradlew("assembleDebug")
+        injected.gradlew("assembleDebug", "assembleRelease", "bundleRelease")
+        injected.gradlew(":composeApp:signingReport")
     }
 }
 

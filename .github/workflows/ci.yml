@@ -160,6 +160,12 @@ jobs:
         run: |
           echo $ENCODED_GOOGLE_SERVICE_INFO_PLIST > ./iosAppComposeUi/iosApp/GoogleService-Info.plist
 
+      - name: Decode and write keystore
+        env:
+          KEYSTORE: ${{ secrets.KEYSTORE }}
+        run: |
+          echo $KEYSTORE | base64 --decode > ./debug.keystore
+
       - uses: actions/setup-java@v4
         with:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
@@ -167,7 +173,35 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew ciAndroid --stacktrace
+      - name: Build release APK and AAB
+        run: ./gradlew ciAndroid --stacktrace
+
+      - name: Print signature composeApp-debug.apk
+        run: keytool -printcert -jarfile composeApp/build/outputs/apk/debug/composeApp-debug.apk
+
+      - name: Print signature composeApp-release.apk
+        run: keytool -printcert -jarfile composeApp/build/outputs/apk/release/composeApp-release.apk
+
+      - name: Print signature composeApp-release.aab
+        run: keytool -printcert -jarfile composeApp/build/outputs/bundle/release/composeApp-release.aab
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: composeApp-debug.apk
+          path: composeApp/build/outputs/apk/debug/composeApp-debug.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: composeApp-release-unsigned.apk
+          path: composeApp/build/outputs/apk/release/composeApp-release.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: composeApp-release.aab
+          path: composeApp/build/outputs/bundle/release/composeApp-release.aab
+
+      - name: Clean up keystore file
+        run: rm debug.keystore
 
 
 

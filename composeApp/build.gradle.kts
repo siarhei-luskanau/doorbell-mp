@@ -119,6 +119,45 @@ android {
         targetCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
     }
     buildFeatures.compose = true
+    signingConfigs {
+        if (rootProject.file("debug.keystore").exists()) {
+            getByName("debug") {
+                storeFile = rootProject.file("debug.keystore")
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+                enableV1Signing = true
+                enableV2Signing = true
+            }
+        }
+        if (rootProject.file("debug.keystore").exists()) {
+            create("release") {
+                storeFile = rootProject.file("debug.keystore")
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+                enableV1Signing = true
+                enableV2Signing = true
+            }
+        }
+    }
+    buildTypes {
+        if (rootProject.file("debug.keystore").exists()) {
+            getByName("debug") {
+                signingConfig = signingConfigs.getByName("debug")
+            }
+        }
+        if (rootProject.file("debug.keystore").exists()) {
+            getByName("release") {
+                signingConfig = signingConfigs.getByName("release")
+                isMinifyEnabled = true
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
+        }
+    }
 }
 
 compose.desktop {
