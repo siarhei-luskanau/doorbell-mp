@@ -12,6 +12,9 @@ kotlin {
             implementation(projects.sharedCore.coreCommon)
             implementation(projects.sharedUi.uiAuth)
             implementation(projects.sharedUi.uiCommon)
+            implementation(projects.sharedUi.uiDoorbellList)
+            implementation(projects.sharedUi.uiImageDetails)
+            implementation(projects.sharedUi.uiImageList)
             implementation(projects.sharedUi.uiPermissions)
             implementation(projects.sharedUi.uiSplash)
         }
