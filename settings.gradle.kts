@@ -7,6 +7,9 @@ include(
     ":sharedCore:coreFirebase",
     ":sharedUi:uiAuth",
     ":sharedUi:uiCommon",
+    ":sharedUi:uiDoorbellList",
+    ":sharedUi:uiImageDetails",
+    ":sharedUi:uiImageList",
     ":sharedUi:uiPermissions",
     ":sharedUi:uiSplash"
 )
