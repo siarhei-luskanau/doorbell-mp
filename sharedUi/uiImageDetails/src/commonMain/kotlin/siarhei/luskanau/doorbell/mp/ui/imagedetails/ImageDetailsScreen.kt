@@ -8,7 +8,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ImageDetailsScreen(viewModelProvider: () -> ImageDetailsViewModel) {
@@ -29,4 +31,10 @@ internal fun ImageDetailsContent(
         // Replace with actual image loading logic
         Text(text = "Showing details for ${viewState.value}")
     }
+}
+
+@Preview
+@Composable
+internal fun ImageDetailsScreenPreview() {
+    ImageDetailsContent(viewState = MutableStateFlow("Image!"), onEvent = {})
 }

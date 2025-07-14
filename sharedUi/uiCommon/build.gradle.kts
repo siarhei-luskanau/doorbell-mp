@@ -17,6 +17,10 @@ android {
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
 
+dependencies {
+    screenshotTestImplementation(libs.screenshot.validation.api)
+}
+
 compose.resources {
     publicResClass = true
     packageOfResClass = "siarhei.luskanau.doorbell.mp.ui.common"

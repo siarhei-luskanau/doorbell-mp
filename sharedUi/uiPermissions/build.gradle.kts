@@ -25,3 +25,7 @@ android {
     testOptions.configureTestOptions()
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
+
+dependencies {
+    screenshotTestImplementation(libs.screenshot.validation.api)
+}

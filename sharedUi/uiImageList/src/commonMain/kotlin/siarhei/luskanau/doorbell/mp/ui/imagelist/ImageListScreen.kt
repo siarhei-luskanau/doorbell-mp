@@ -10,7 +10,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import siarhei.luskanau.doorbell.mp.ui.common.theme.AppTheme
 
 @Composable
 fun ImageListScreen(viewModelProvider: () -> ImageListViewModel) {
@@ -35,5 +38,16 @@ internal fun ImageListContent(viewState: StateFlow<String>, onEvent: (ImageListV
                     .clickable { onEvent(ImageListViewEvent.ImageClicked(image)) }
             )
         }
+    }
+}
+
+@Preview
+@Composable
+internal fun ImageListScreenPreview() {
+    AppTheme {
+        ImageListContent(
+            viewState = MutableStateFlow("Doorbell!"),
+            onEvent = {}
+        )
     }
 }

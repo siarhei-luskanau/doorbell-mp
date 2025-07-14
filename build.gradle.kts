@@ -48,14 +48,10 @@ tasks.register("ciUpdateScreenshot") {
     group = CI_GRADLE
     val injected = project.objects.newInstance<Injected>()
     doLast {
-        try {
-            injected.gradlew(
-                "ktlintFormat",
-                "updateDebugScreenshotTest"
-            )
-        } catch (error: Exception) {
-            error.printStackTrace()
-        }
+        injected.gradlew(
+            "ktlintFormat",
+            "updateDebugScreenshotTest"
+        )
     }
 }
 
