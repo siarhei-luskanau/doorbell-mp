@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun DoorbellListScreen(viewModelProvider: () -> DoorbellListViewModel) {
@@ -29,4 +30,10 @@ internal fun DoorbellListContent(onEvent: (DoorbellListViewEvent) -> Unit) {
             )
         }
     }
+}
+
+@Preview
+@Composable
+internal fun DoorbellListScreenPreview() {
+    DoorbellListContent(onEvent = {})
 }
