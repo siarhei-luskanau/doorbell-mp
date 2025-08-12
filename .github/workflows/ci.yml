@@ -21,7 +21,9 @@ jobs:
       contents: write
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
 
       - uses: actions/setup-java@v4
         with:
@@ -51,7 +53,9 @@ jobs:
       contents: write
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Enable KVM group perms
         run: |
@@ -107,7 +111,7 @@ jobs:
             emulator: false
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Decode and write google-services.json
         env:
@@ -146,7 +150,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Decode and write google-services.json
         env:
@@ -213,7 +217,7 @@ jobs:
         os: [ macos-latest, ubuntu-latest, ubuntu-24.04-arm ]
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Decode and write google-services.json
         env:
@@ -242,7 +246,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Decode and write google-services.json
         env:
@@ -274,7 +278,7 @@ jobs:
 #    continue-on-error: true
 #    steps:
 #
-#      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v5
 #
 #      - name: Decode and write google-services.json
 #        env:
@@ -305,7 +309,7 @@ jobs:
     runs-on: macos-latest
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Decode and write google-services.json
         env:
