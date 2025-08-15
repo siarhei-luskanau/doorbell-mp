@@ -33,7 +33,7 @@ kotlin {
 //    }
 
     listOf(
-        iosX64(),
+        // iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -196,7 +196,7 @@ dependencies {
     add("kspCommonMainMetadata", libs.koin.ksp.compiler)
     add("kspIosArm64", libs.koin.ksp.compiler)
     add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
-    add("kspIosX64", libs.koin.ksp.compiler)
+    // add("kspIosX64", libs.koin.ksp.compiler)
     add("kspJs", libs.koin.ksp.compiler)
     add("kspJvm", libs.koin.ksp.compiler)
     debugImplementation(libs.leakcanary.android)
