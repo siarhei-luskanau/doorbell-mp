@@ -189,17 +189,17 @@ jobs:
       - name: Print signature composeApp-release.aab
         run: keytool -printcert -jarfile composeApp/build/outputs/bundle/release/composeApp-release.aab
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: composeApp-debug.apk
           path: composeApp/build/outputs/apk/debug/composeApp-debug.apk
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: composeApp-release-unsigned.apk
           path: composeApp/build/outputs/apk/release/composeApp-release.apk
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: composeApp-release.aab
           path: composeApp/build/outputs/bundle/release/composeApp-release.aab
