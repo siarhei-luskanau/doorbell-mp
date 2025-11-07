@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.InjectedParam
+import org.koin.core.annotation.Provided
 import siarhei.luskanau.doorbell.mp.core.firebase.FirebaseProvider
 import siarhei.luskanau.doorbell.mp.ui.auth.AuthNavigation
 
@@ -12,7 +13,7 @@ import siarhei.luskanau.doorbell.mp.ui.auth.AuthNavigation
 internal class ForgotPasswordViewModelImpl(
     @InjectedParam private val authNavigation: AuthNavigation,
     @InjectedParam private val username: String,
-    private val firebaseProvider: FirebaseProvider
+    @Provided private val firebaseProvider: FirebaseProvider
 ) : ForgotPasswordViewModel() {
 
     private val isLoadingFlow = MutableStateFlow(false)

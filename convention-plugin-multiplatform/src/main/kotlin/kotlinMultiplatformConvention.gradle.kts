@@ -45,12 +45,18 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.animation)
+            implementation(compose.animationGraphics)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.material3AdaptiveNavigationSuite)
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
+            implementation(compose.runtimeSaveable)
+            implementation(compose.ui)
+            implementation(compose.uiUtil)
             implementation(libs.findLibrary("jetbrains-lifecycle-viewmodel-compose").get())
             implementation(libs.findLibrary("jetbrains-navigation-compose").get())
             implementation(libs.findLibrary("koin-compose").get())
