@@ -63,8 +63,10 @@ internal fun PermissionsComposable(viewModel: PermissionsViewModel) {
                 when (permissionsViewState) {
                     PermissionsViewState.NotGrantedPermissionsViewState ->
                         UiCommonRes.string.ui_permissions_message_not_granted
+
                     PermissionsViewState.GrantedPermissionsViewState ->
                         UiCommonRes.string.ui_permissions_message_granted
+
                     PermissionsViewState.DeniedPermissionsViewState ->
                         UiCommonRes.string.ui_permissions_message_denied
                 }
@@ -93,8 +95,10 @@ internal fun PermissionsComposable(viewModel: PermissionsViewModel) {
                 when (permissionsViewState) {
                     PermissionsViewState.NotGrantedPermissionsViewState ->
                         viewModel.onRequestPermissionClicked()
+
                     PermissionsViewState.GrantedPermissionsViewState ->
                         viewModel.onPermissionScreenCompleted()
+
                     PermissionsViewState.DeniedPermissionsViewState ->
                         viewModel.onOpenSettingsClicked()
                 }
@@ -112,6 +116,7 @@ internal fun PermissionsComposable(viewModel: PermissionsViewModel) {
                         PermissionsViewState.NotGrantedPermissionsViewState,
                         PermissionsViewState.GrantedPermissionsViewState ->
                             UiCommonRes.string.ui_permissions_request_permission
+
                         PermissionsViewState.DeniedPermissionsViewState ->
                             UiCommonRes.string.ui_permissions_open_settings
                     }

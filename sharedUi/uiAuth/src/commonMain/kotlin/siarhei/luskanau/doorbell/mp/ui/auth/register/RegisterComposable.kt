@@ -127,8 +127,8 @@ internal fun RegisterComposable(viewModel: RegisterViewModel) {
         viewModel.viewState.errorFlow.collectAsState().value?.let { error ->
             Text(
                 text =
-                stringResource(UiCommonRes.string.general_error_message) +
-                    "\n${error.message.orEmpty()}",
+                    stringResource(UiCommonRes.string.general_error_message) +
+                        "\n${error.message.orEmpty()}",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
