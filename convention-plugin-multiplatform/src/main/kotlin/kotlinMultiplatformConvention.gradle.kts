@@ -104,3 +104,7 @@ android {
     }
     packaging.resources.excludes.add("META-INF/**")
 }
+
+tasks.withType<AbstractTestTask>().configureEach {
+    failOnNoDiscoveredTests = false
+}
