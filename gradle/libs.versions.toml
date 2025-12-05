@@ -1,7 +1,7 @@
 [versions]
 agp = "8.13.1"
 androidx-activity = "1.12.0"
-androidx-compose-ui-test = "1.9.5"
+androidx-compose-ui-test = "1.10.0"
 androidx-monitor = "1.8.0"
 androidx-splashscreen = "1.2.0"
 build-android-compileSdk = "36"
