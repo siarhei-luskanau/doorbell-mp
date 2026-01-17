@@ -12,9 +12,6 @@ fun TestOptions.configureTestOptions() {
         }
     }
     animationsDisabled = true
-    emulatorSnapshots {
-        enableForTestFailures = false
-    }
     managedDevices.allDevices.create<ManagedVirtualDevice>("managedVirtualDevice") {
         device = "Pixel 2"
         apiLevel = 33
