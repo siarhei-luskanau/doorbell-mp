@@ -1,23 +1,31 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     id("org.jetbrains.compose")
     kotlin("multiplatform")
     kotlin("plugin.compose")
 }
 
 kotlin {
-    jvmToolchain(libs.findVersion("build-jvmTarget").get().requiredVersion.toInt())
+    jvmToolchain(libs.findVersion("javaVersion").get().requiredVersion.toInt())
 
-    androidTarget {
-        // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+    androidLibrary {
+        compileSdk = libs.findVersion("build-android-compileSdk").get().requiredVersion.toInt()
+        minSdk = libs.findVersion("build-android-minSdk").get().requiredVersion.toInt()
+
+        compilerOptions {
+            jvmTarget.set(
+                JvmTarget.fromTarget(libs.findVersion("javaVersion").get().requiredVersion)
+            )
+        }
+
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
     }
 
     jvm()
@@ -85,24 +93,6 @@ kotlin {
         iosMain.dependencies {
         }
     }
-}
-
-android {
-    compileSdk = libs.findVersion("build-android-compileSdk").get().requiredVersion.toInt()
-    defaultConfig {
-        minSdk = libs.findVersion("build-android-minSdk").get().requiredVersion.toInt()
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildFeatures.compose = true
-    compileOptions {
-        sourceCompatibility = JavaVersion.valueOf(
-            libs.findVersion("build-javaVersion").get().requiredVersion
-        )
-        targetCompatibility = JavaVersion.valueOf(
-            libs.findVersion("build-javaVersion").get().requiredVersion
-        )
-    }
-    packaging.resources.excludes.add("META-INF/**")
 }
 
 tasks.withType<AbstractTestTask>().configureEach {

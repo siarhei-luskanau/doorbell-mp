@@ -1,24 +1,23 @@
 plugins {
     id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
-    alias(libs.plugins.compose.screenshot)
+    // alias(libs.plugins.compose.screenshot)
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "siarhei.luskanau.doorbell.mp.ui.common"
+        // testOptions.configureTestOptions()
+        experimentalProperties["android.experimental.enableScreenshotTest"] = true
+    }
     sourceSets {
         commonMain.dependencies {
         }
     }
 }
 
-android {
-    namespace = "siarhei.luskanau.doorbell.mp.ui.common"
-    testOptions.configureTestOptions()
-    experimentalProperties["android.experimental.enableScreenshotTest"] = true
-}
-
 dependencies {
-    screenshotTestImplementation(libs.screenshot.validation.api)
+    // screenshotTestImplementation(libs.screenshot.validation.api)
 }
 
 compose.resources {

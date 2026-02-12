@@ -6,17 +6,19 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "siarhei.luskanau.doorbell.mp.core.firebase"
+        // testOptions.configureTestOptions()
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(libs.gitlive.firebase.auth)
             implementation(projects.sharedCore.coreCommon)
         }
+        androidMain.dependencies {
+            implementation(project.dependencies.platform(libs.firebase.bom))
+        }
     }
-}
-
-android {
-    namespace = "siarhei.luskanau.doorbell.mp.core.firebase"
-    testOptions.configureTestOptions()
 }
 
 buildConfig {
@@ -27,7 +29,7 @@ buildConfig {
     }
     val googleServicesJsonParser = GoogleServicesJsonParser(
         googleServicesJsonFile = File(
-            File(rootProject.rootDir, "composeApp"),
+            File(File(rootProject.rootDir, "app"), "androidApp"),
             "google-services.json"
         ),
         packageName = "siarhei.luskanau.doorbell.mp.app"

@@ -1,6 +1,7 @@
 rootProject.name = "DoorbellMp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
+    ":app:androidApp",
     ":composeApp",
     ":navigation",
     ":sharedCore:coreCommon",
