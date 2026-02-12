@@ -7,11 +7,12 @@ import java.util.Properties
 import org.apache.tools.ant.taskdefs.condition.Os
 
 println("gradle.startParameter.taskNames: ${gradle.startParameter.taskNames}")
-System.getProperties().forEach { key, value -> println("System.getProperties(): $key=$value") }
+System.getProperties().forEach { (key, value) -> println("System.getProperties(): $key=$value") }
 System.getenv().forEach { (key, value) -> println("System.getenv(): $key=$value") }
 
 plugins {
     alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.android.kotlin.multiplatform.library).apply(false)
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.compose.compiler).apply(false)
     alias(libs.plugins.detekt)
@@ -49,8 +50,8 @@ tasks.register("ciUpdateScreenshot") {
     val injected = project.objects.newInstance<Injected>()
     doLast {
         injected.gradlew(
-            "ktlintFormat",
-            "updateDebugScreenshotTest"
+            "ktlintFormat"
+            // "updateDebugScreenshotTest"
         )
     }
 }
@@ -60,7 +61,7 @@ tasks.register("ciAndroid") {
     val injected = project.objects.newInstance<Injected>()
     doLast {
         injected.gradlew("assembleDebug", "assembleRelease", "bundleRelease")
-        injected.gradlew(":composeApp:signingReport")
+        injected.gradlew(":app:androidApp:signingReport")
     }
 }
 

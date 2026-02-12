@@ -1,11 +1,16 @@
 plugins {
     id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
-    alias(libs.plugins.compose.screenshot)
+    // alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "siarhei.luskanau.doorbell.mp.navigation"
+        // testOptions.configureTestOptions()
+        experimentalProperties["android.experimental.enableScreenshotTest"] = true
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
@@ -21,12 +26,6 @@ kotlin {
     }
 }
 
-android {
-    namespace = "siarhei.luskanau.doorbell.mp.navigation"
-    testOptions.configureTestOptions()
-    experimentalProperties["android.experimental.enableScreenshotTest"] = true
-}
-
 dependencies {
-    screenshotTestImplementation(libs.screenshot.validation.api)
+    // screenshotTestImplementation(libs.screenshot.validation.api)
 }

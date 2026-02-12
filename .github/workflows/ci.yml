@@ -93,7 +93,7 @@ jobs:
             emulator: false
           - gradle-tasks: "testDebugUnitTest"
             os: ubuntu-latest
-            experimental: true
+            experimental: false
             emulator: false
           - gradle-tasks: "jsBrowserTest"
             os: ubuntu-latest
@@ -150,7 +150,7 @@ jobs:
         env:
           ENCODED_GOOGLE_SERVICES_JSON: ${{ secrets.ENCODED_GOOGLE_SERVICES_JSON }}
         run: |
-          echo $ENCODED_GOOGLE_SERVICES_JSON > ./composeApp/google-services.json
+          echo $ENCODED_GOOGLE_SERVICES_JSON > ./app/androidApp/google-services.json
 
       - name: Decode and write GoogleService-Info.plist
         env:
@@ -174,29 +174,29 @@ jobs:
       - name: Build release APK and AAB
         run: ./gradlew ciAndroid --stacktrace
 
-      - name: Print signature composeApp-debug.apk
-        run: keytool -printcert -jarfile composeApp/build/outputs/apk/debug/composeApp-debug.apk
+      - name: Print signature androidApp-debug.apk
+        run: keytool -printcert -jarfile app/androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
-      - name: Print signature composeApp-release.apk
-        run: keytool -printcert -jarfile composeApp/build/outputs/apk/release/composeApp-release.apk
+      - name: Print signature androidApp-release.apk
+        run: keytool -printcert -jarfile app/androidApp/build/outputs/apk/release/androidApp-release.apk
 
-      - name: Print signature composeApp-release.aab
-        run: keytool -printcert -jarfile composeApp/build/outputs/bundle/release/composeApp-release.aab
-
-      - uses: actions/upload-artifact@v6
-        with:
-          name: composeApp-debug.apk
-          path: composeApp/build/outputs/apk/debug/composeApp-debug.apk
+      - name: Print signature androidApp-release.aab
+        run: keytool -printcert -jarfile app/androidApp/build/outputs/bundle/release/androidApp-release.aab
 
       - uses: actions/upload-artifact@v6
         with:
-          name: composeApp-release-unsigned.apk
-          path: composeApp/build/outputs/apk/release/composeApp-release.apk
+          name: androidApp-debug.apk
+          path: app/androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
       - uses: actions/upload-artifact@v6
         with:
-          name: composeApp-release.aab
-          path: composeApp/build/outputs/bundle/release/composeApp-release.aab
+          name: androidApp-release-unsigned.apk
+          path: app/androidApp/build/outputs/apk/release/androidApp-release.apk
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: androidApp-release.aab
+          path: app/androidApp/build/outputs/bundle/release/androidApp-release.aab
 
       - name: Clean up keystore file
         run: rm debug.keystore

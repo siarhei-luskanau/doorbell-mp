@@ -7,17 +7,17 @@ androidx-splashscreen = "1.2.0"
 build-android-compileSdk = "36"
 build-android-minSdk = "24"
 build-android-targetSdk = "36"
-build-javaVersion = "VERSION_21"
-build-jvmTarget = "21"
 buildConfig = "6.0.7"
 compose = "1.10.1"
 compose-screenshot = "0.0.1-alpha13"
 detekt = "1.23.8"
+firebase-bom = "34.9.0"
 gitlive-firebase = "2.4.0"
 google-ksp = "2.3.5"
 google-services = "4.4.4"
 gson = "2.13.2"
 hotReload = "1.0.0"
+javaVersion = "21"
 jetbrains-lifecycle = "2.9.6"
 jetbrains-navigation = "2.9.2"
 koin-bom = "4.1.1"
@@ -36,6 +36,8 @@ androidx-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", 
 androidx-compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-compose-ui-test" }
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "androidx-monitor" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "gitlive-firebase" }
 google-ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "google-ksp" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -59,6 +61,7 @@ screenshot-validation-api = { module = "com.android.tools.screenshot:screenshot-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
