@@ -1,12 +1,10 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.google.ksp)
     alias(libs.plugins.hotReload)
     alias(libs.plugins.multiplatform)
     id("testOptionsConvention")
@@ -38,7 +36,6 @@ kotlin {
 //    }
 
     listOf(
-        // iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -100,6 +97,8 @@ kotlin {
     }
 }
 
+apply(plugin = libs.plugins.google.ksp.get().pluginId)
+
 compose.desktop {
     application {
         mainClass = "MainKt"
@@ -129,11 +128,10 @@ dependencies {
     add("kspCommonMainMetadata", libs.koin.ksp.compiler)
     add("kspIosArm64", libs.koin.ksp.compiler)
     add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
-    // add("kspIosX64", libs.koin.ksp.compiler)
     add("kspJs", libs.koin.ksp.compiler)
     add("kspJvm", libs.koin.ksp.compiler)
 }
 
-ksp {
+extensions.configure<com.google.devtools.ksp.gradle.KspExtension> {
     arg("KOIN_CONFIG_CHECK", "true")
 }
