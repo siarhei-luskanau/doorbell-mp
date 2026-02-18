@@ -1,5 +1,4 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
 
@@ -16,12 +15,6 @@ kotlin {
     androidLibrary {
         compileSdk = libs.findVersion("build-android-compileSdk").get().requiredVersion.toInt()
         minSdk = libs.findVersion("build-android-minSdk").get().requiredVersion.toInt()
-
-        compilerOptions {
-            jvmTarget.set(
-                JvmTarget.fromTarget(libs.findVersion("javaVersion").get().requiredVersion)
-            )
-        }
 
         withDeviceTest {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -41,7 +34,6 @@ kotlin {
 //    }
 
     listOf(
-        // iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
