@@ -183,17 +183,17 @@ jobs:
       - name: Print signature androidApp-release.aab
         run: keytool -printcert -jarfile app/androidApp/build/outputs/bundle/release/androidApp-release.aab
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: androidApp-debug.apk
           path: app/androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: androidApp-release-unsigned.apk
           path: app/androidApp/build/outputs/apk/release/androidApp-release.apk
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: androidApp-release.aab
           path: app/androidApp/build/outputs/bundle/release/androidApp-release.aab
