@@ -10,25 +10,24 @@ To run the application on android device/emulator:
  - open project in Android Studio and run imported android run configuration
 
 To build the application bundle:
- - run `./gradlew :composeApp:assembleDebug`
- - find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
-Run android simulator UI tests: `./gradlew :composeApp:pixel5Check`
+ - run `./gradlew :app:androidApp:assembleDebug`
+ - find `.apk` file in `app/androidApp/build/outputs/apk/debug/composeApp-debug.apk`
+ - run android simulator UI tests: `./gradlew managedVirtualDeviceDebugAndroidTest`
 
 ### Desktop
-Run the desktop application: `./gradlew :composeApp:run`
-Run desktop UI tests: `./gradlew :composeApp:jvmTest`
+ - run the desktop application: `./gradlew :composeApp:run`
+ - run desktop UI tests: `./gradlew :composeApp:jvmTest`
 
 ### iOS
 To run the application on iPhone device/simulator:
  - Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
  - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
-Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
+ - run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
 
 ### Experimental Browser (JS)
-Run the browser application: `./gradlew :composeApp:jsBrowserDevelopmentRun --continue`
-Run browser UI tests: `./gradlew :composeApp:jsBrowserTest`
+ - run the browser application: `./gradlew :composeApp:jsBrowserDevelopmentRun --continue`
+ - run browser UI tests: `./gradlew :composeApp:jsBrowserTest`
 
 ### Experimental Browser (Wasm)
-Run the browser application: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --continue`
-Run browser UI tests: `./gradlew :composeApp:wasmJsBrowserTest`
-
+ - run the browser application: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --continue`
+ - run browser UI tests: `./gradlew :composeApp:wasmJsBrowserTest`

@@ -3,13 +3,14 @@ plugins {
 }
 
 dependencies {
-    compileOnly(libs.android.gradle.plugin)
-    compileOnly(libs.google.ksp.plugin)
-    compileOnly(libs.jetbrains.compose.plugin)
-    compileOnly(libs.kotlin.gradle.plugin)
-    runtimeOnly(libs.android.gradle.plugin)
-    runtimeOnly(libs.google.ksp.plugin)
-    runtimeOnly(libs.jetbrains.compose.compiler.plugin)
-    runtimeOnly(libs.jetbrains.compose.plugin)
-    runtimeOnly(libs.kotlin.gradle.plugin)
+    implementation(libs.android.gradle.plugin)
+    implementation(libs.jetbrains.compose.compiler.plugin)
+    implementation(libs.jetbrains.compose.plugin)
+    implementation(libs.koin.plugin)
+    implementation(libs.kotlin.gradle.plugin)
+
+    // Somewhat hacky way to access libs.version.toml in convention plugins.
+    // IntelliJ can mark this code red, but it actually compiles.
+    // https://github.com/gradle/gradle/issues/15383
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }

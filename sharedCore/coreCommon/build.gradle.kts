@@ -1,5 +1,5 @@
 plugins {
-    id("kotlinMultiplatformKspConvention")
+    id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
 }
 

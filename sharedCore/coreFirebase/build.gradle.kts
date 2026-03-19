@@ -1,6 +1,6 @@
 plugins {
     id("gsParserConvention")
-    id("kotlinMultiplatformKspConvention")
+    id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
     alias(libs.plugins.buildConfig)
 }

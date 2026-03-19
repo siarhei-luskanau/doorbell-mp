@@ -4,6 +4,7 @@ val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs"
 
 plugins {
     id("com.android.kotlin.multiplatform.library")
+    id("io.insert-koin.compiler.plugin")
     id("org.jetbrains.compose")
     kotlin("multiplatform")
     kotlin("plugin.compose")
@@ -59,6 +60,7 @@ kotlin {
             implementation(compose.uiUtil)
             implementation(libs.findLibrary("jetbrains-lifecycle-viewmodel-compose").get())
             implementation(libs.findLibrary("jetbrains-navigation-compose").get())
+            implementation(libs.findLibrary("koin-annotations").get())
             implementation(libs.findLibrary("koin-compose").get())
             implementation(libs.findLibrary("kotlinx-coroutines-core").get())
             implementation(project.dependencies.platform(libs.findLibrary("koin-bom").get()))
@@ -85,6 +87,10 @@ kotlin {
         iosMain.dependencies {
         }
     }
+}
+
+koinCompiler {
+    compileSafety = false
 }
 
 tasks.withType<AbstractTestTask>().configureEach {

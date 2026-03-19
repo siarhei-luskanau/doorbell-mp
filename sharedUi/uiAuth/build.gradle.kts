@@ -1,5 +1,5 @@
 plugins {
-    id("kotlinMultiplatformKspConvention")
+    id("kotlinMultiplatformConvention")
     id("testOptionsConvention")
     // alias(libs.plugins.compose.screenshot)
     alias(libs.plugins.kotlinx.serialization)
