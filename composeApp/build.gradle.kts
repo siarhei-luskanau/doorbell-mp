@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.hotReload)
+    alias(libs.plugins.koin.compiler)
     alias(libs.plugins.multiplatform)
     id("testOptionsConvention")
 }
@@ -53,6 +53,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.runtime)
             implementation(libs.gitlive.firebase.auth)
+            implementation(libs.koin.annotations)
             implementation(libs.koin.compose)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(projects.navigation)
@@ -97,7 +98,9 @@ kotlin {
     }
 }
 
-apply(plugin = libs.plugins.google.ksp.get().pluginId)
+koinCompiler {
+    compileSafety = false
+}
 
 compose.desktop {
     application {
@@ -120,18 +123,4 @@ compose.desktop {
             }
         }
     }
-}
-
-dependencies {
-    // KSP Tasks
-    add("kspAndroid", libs.koin.ksp.compiler)
-    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
-    add("kspIosArm64", libs.koin.ksp.compiler)
-    add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
-    add("kspJs", libs.koin.ksp.compiler)
-    add("kspJvm", libs.koin.ksp.compiler)
-}
-
-extensions.configure<com.google.devtools.ksp.gradle.KspExtension> {
-    arg("KOIN_CONFIG_CHECK", "true")
 }

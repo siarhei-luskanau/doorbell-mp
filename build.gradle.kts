@@ -16,9 +16,8 @@ plugins {
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.compose.compiler).apply(false)
     alias(libs.plugins.detekt)
-    alias(libs.plugins.google.ksp).apply(false)
     alias(libs.plugins.google.services).apply(false)
-    alias(libs.plugins.hotReload).apply(false)
+    alias(libs.plugins.koin.compiler).apply(false)
     alias(libs.plugins.multiplatform).apply(false)
 }
 

@@ -324,6 +324,4 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v5
 
-      - run: ./gradlew kspCommonMainKotlinMetadata --stacktrace
-
       - run: ./gradlew ciIos --stacktrace
