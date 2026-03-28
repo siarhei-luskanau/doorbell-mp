@@ -30,7 +30,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ktlintFormat --stacktrace
       - uses: stefanzweifel/git-auto-commit-action@v7
@@ -62,7 +62,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ciUpdateScreenshot --stacktrace
 
@@ -131,7 +131,7 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ciSdkManagerLicenses --stacktrace
         if: matrix.emulator
@@ -169,7 +169,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Build release APK and AAB
         run: ./gradlew ciAndroid --stacktrace
@@ -230,7 +230,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ciDesktop --stacktrace
 
@@ -259,7 +259,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ciJsBrowser --stacktrace
 
@@ -291,7 +291,7 @@ jobs:
 #          distribution: ${{ env.JAVA_DISTRIBUTION }}
 #          java-version: ${{ env.JAVA_VERSION }}
 #
-#      - uses: gradle/actions/setup-gradle@v5
+#      - uses: gradle/actions/setup-gradle@v6
 #
 #      - run: ./gradlew ciWasmJsBrowser --stacktrace
 #
@@ -322,6 +322,6 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
 
       - run: ./gradlew ciIos --stacktrace
